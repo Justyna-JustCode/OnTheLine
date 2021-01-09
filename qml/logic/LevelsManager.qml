@@ -24,8 +24,7 @@ QtObject {
     readonly property alias currentLevel: priv.currentIndex
 
     // details of a map for currently loaded level
-    property size currentMapSize: Qt.size(0, 0)
-    property var currentMapData: []
+    property var currentMapData: ({})
 
     // an internal private object
     property QtObject priv: QtObject {
@@ -39,8 +38,7 @@ QtObject {
         property url currentPath: levelsFiles.length ? qrc(levels_dir + levelsFiles[currentLevel]) : ""
 
         function clearLevelData() {
-            currentMapSize = Qt.size(0, 0)
-            currentMapData = []
+            currentMapData = {}
         }
 
         function loadLevelData() {
@@ -64,7 +62,7 @@ QtObject {
                 return
             }
 
-            var mapData = []
+            var mapContent = []
             for (var idx = 1; idx <= mapSize.height; ++idx) {
                 var rowData = levelDetails[idx]
                 if (!rowData.match(valid_lvl_regexp)) {
@@ -72,11 +70,10 @@ QtObject {
                     return
                 }
 
-                mapData.push(rowData)
+                mapContent.push(rowData)
             }
 
-            currentMapSize = mapSize
-            currentMapData = mapData
+            currentMapData = { "size": mapSize, "content": mapContent }
         }
     }
 

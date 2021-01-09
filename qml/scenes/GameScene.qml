@@ -23,36 +23,13 @@ import Felgo 3.0
 
 import "../styles"
 import "../components"
+import "../components/game"
 
 SceneBase {
   id: root
+  property var mapData: levelsManager.currentMapData
 
-  property int levelNumber: 0
-
-  // temporary implementation
-
-  // background
-  Rectangle {
-    id: background
-
-    anchors.fill: parent
-
-    color: "red"
-  }
-
-  Column {
-      Text {
-          text: levelNumber
-      }
-
-      CustomButton {
-          Layout.alignment: Qt.AlignHCenter
-
-          width: 20
-          height: 20
-          text: "<"
-
-          onClicked: backRequest()
-      }
+  MapBackground {
+      mapData: root.mapData
   }
 }
