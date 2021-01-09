@@ -25,6 +25,9 @@ delivery {
 
     assetsFolder.source = assets
     DEPLOYMENTFOLDERS += assetsFolder
+
+    levelsFolder.source = levels
+    DEPLOYMENTFOLDERS += levelsFolder
 }
 
 SOURCES += main.cpp

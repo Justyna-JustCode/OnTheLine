@@ -21,6 +21,7 @@ import Felgo 3.0
 import QtQuick 2.12
 
 import "scenes"
+import "logic"
 
 GameWindow {
     id: root
@@ -58,7 +59,8 @@ GameWindow {
         state = "levels"
     }
     function startLevel(number) {
-        gameScene.levelNumber = number
+        levelsManager.loadLevel(number)
+
         state = "game"
     }
     function quit() {
@@ -66,6 +68,7 @@ GameWindow {
         Qt.quit();
     }
 
+    // scenes
     MainMenuScene {
         id: mainMenuScene
 
@@ -84,9 +87,14 @@ GameWindow {
         onBackRequest: root.showLevels()
     }
 
+    // logic
+    LevelsManager {
+        id: levelsManager
+    }
+
 
     // global tools
-    readonly property url mainQmlPath: Qt.resolvedUrl("./")
+    readonly property url appPath: Qt.resolvedUrl("../")
     function isLiveMode() {
         return typeof felgoLiveEngine !== "undefined";
     }
@@ -94,7 +102,7 @@ GameWindow {
         if (!isLiveMode() && DELIVERY_BUILD) {
             return "qrc:" + relativePath;
         }
-        console.log(mainQmlPath + "../" + relativePath)
-        return mainQmlPath + "../" + relativePath;
+
+        return appPath + relativePath;
     }
 }

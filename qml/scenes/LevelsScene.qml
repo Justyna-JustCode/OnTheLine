@@ -46,17 +46,18 @@ SceneBase {
           rowSpacing: Style.sizes.margin
 
           Repeater {
-              model: 5
+              model: levelsManager.count
 
               delegate: LevelButton {
-                  property int levelNumber: index + 1
+                  readonly property int levelIndex: index
+                  readonly property int levelNumber: index + 1
 
                   Layout.fillWidth: true
                   Layout.preferredHeight: width
 
                   text: levelNumber
 
-                  onClicked: root.levelSelected(levelNumber)
+                  onClicked: root.levelSelected(levelIndex)
               }
           }
 
