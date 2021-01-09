@@ -19,6 +19,7 @@
 
 import QtQuick 2.12
 import QtQuick.Layouts 1.12
+import QtQuick.Controls 2.12
 import Felgo 3.0
 
 import "../styles"
@@ -29,7 +30,28 @@ SceneBase {
   id: root
   property var mapData: levelsManager.currentMapData
 
-  MapBackground {
-      mapData: root.mapData
+  MenuBackground {}
+
+  ColumnLayout {
+      anchors.fill: parent
+      spacing: 0
+
+      RowLayout {
+          ImageButton {
+              Layout.alignment: Qt.AlignHCenter
+              source: qrc("/assets/icons/back-icon.svg")
+
+              onClicked: backRequest()
+          }
+      }
+
+      GameFieldBackground {    // game field
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+
+          MapBackground {
+              mapData: root.mapData
+          }
+      }
   }
 }

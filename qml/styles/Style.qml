@@ -27,6 +27,8 @@ QtObject {
 
         readonly property int margin: 15
         readonly property int bigMargin: 30
+
+        readonly property int defaultButtonSize: 40
     }
 
     readonly property var behavior: QtObject {

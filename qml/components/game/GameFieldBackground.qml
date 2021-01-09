@@ -20,25 +20,6 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
-import "../styles"
-
-RoundButton {
-    property alias source: image.source
-    property url source
-
-    padding: Style.sizes.bigPadding
-
-    implicitWidth: Style.sizes.defaultButtonSize
-    implicitHeight: Style.sizes.defaultButtonSize
-    radius: width / 2
-
-    contentItem: Item {
-        Image {
-            id: image
-            anchors.fill: parent
-
-            sourceSize.width: contentItem.width
-            sourceSize.height: contentItem.height
-        }
-    }
+Rectangle {
+    color: "black"
 }

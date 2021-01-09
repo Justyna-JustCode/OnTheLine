@@ -65,9 +65,6 @@ SceneBase {
 
       ImageButton {
           Layout.alignment: Qt.AlignHCenter
-
-          width: 20
-          height: 20
           source: qrc("/assets/icons/back-icon.svg")
 
           onClicked: backRequest()
