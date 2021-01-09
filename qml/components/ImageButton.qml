@@ -1,7 +1,3 @@
-import QtQuick 2.12
-import QtQuick.Layouts 1.12
-import Felgo 3.0
-
 /********************************************
 ** On the line!
 ** Copyright 2021 Justyna JustCode
@@ -21,38 +17,26 @@ import Felgo 3.0
 **
 ********************************************/
 
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+
 import "../styles"
-import "../components"
 
-SceneBase {
-  id: root
+RoundButton {
+    property alias source: image.source
+    property url source
 
-  signal startGame
+    padding: Style.sizes.bigPadding
 
-  MenuBackground {}
+    radius: width / 2
 
-  ColumnLayout {
-      anchors {
-          top: parent.top
-          bottom: parent.bottom
-          horizontalCenter: parent.horizontalCenter
+    contentItem: Item {
+        Image {
+            id: image
+            anchors.fill: parent
 
-          margins: Style.sizes.bigMargin
-      }
-
-      CustomButton {
-          text: qsTr("Start game")
-
-          onClicked: root.startGame()
-      }
-      CustomButton {
-          text: qsTr("Quit")
-
-          onClicked: root.backRequest()
-      }
-
-      Spacer {
-          Layout.fillHeight: true
-      }
-  }
+            sourceSize.width: contentItem.width
+            sourceSize.height: contentItem.height
+        }
+    }
 }

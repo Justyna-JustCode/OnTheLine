@@ -6,5 +6,13 @@
         <file>qml/scenes/SceneBase.qml</file>
         <file>qml/styles/qmldir</file>
         <file>qml/styles/Style.qml</file>
+        <file>assets/icons/back-icon.svg</file>
+        <file>assets/felgo-logo.png</file>
+        <file>qml/components/CustomButton.qml</file>
+        <file>qml/components/ImageButton.qml</file>
+        <file>qml/components/MenuBackground.qml</file>
+        <file>qml/scenes/GameScene.qml</file>
+        <file>qml/scenes/LevelsScene.qml</file>
+        <file>qml/config.json</file>
     </qresource>
 </RCC>

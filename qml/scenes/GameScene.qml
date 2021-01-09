@@ -25,7 +25,11 @@ import "../styles"
 import "../components"
 
 SceneBase {
-  id: menuScene
+  id: root
+
+  property int levelNumber: 0
+
+  // temporary implementation
 
   // background
   Rectangle {
@@ -34,5 +38,21 @@ SceneBase {
     anchors.fill: parent
 
     color: "red"
+  }
+
+  Column {
+      Text {
+          text: levelNumber
+      }
+
+      CustomButton {
+          Layout.alignment: Qt.AlignHCenter
+
+          width: 20
+          height: 20
+          text: "<"
+
+          onClicked: backRequest()
+      }
   }
 }

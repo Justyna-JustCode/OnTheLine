@@ -1,7 +1,3 @@
-import QtQuick 2.12
-import QtQuick.Layouts 1.12
-import Felgo 3.0
-
 /********************************************
 ** On the line!
 ** Copyright 2021 Justyna JustCode
@@ -21,38 +17,60 @@ import Felgo 3.0
 **
 ********************************************/
 
+import QtQuick 2.12
+import QtQuick.Layouts 1.12
+import Felgo 3.0
+
 import "../styles"
 import "../components"
+import "../components/levels"
 
 SceneBase {
   id: root
 
-  signal startGame
+  signal levelSelected(int number)
 
   MenuBackground {}
 
   ColumnLayout {
       anchors {
-          top: parent.top
-          bottom: parent.bottom
-          horizontalCenter: parent.horizontalCenter
-
-          margins: Style.sizes.bigMargin
+          fill: parent
+          margins: Style.sizes.margin
       }
 
-      CustomButton {
-          text: qsTr("Start game")
+      // TODO: add scroll area when needed
+      GridLayout {
+          columns: 4
 
-          onClicked: root.startGame()
+          columnSpacing: Style.sizes.margin
+          rowSpacing: Style.sizes.margin
+
+          Repeater {
+              model: 5
+
+              delegate: LevelButton {
+                  property int levelNumber: index + 1
+
+                  Layout.fillWidth: true
+                  Layout.preferredHeight: width
+
+                  text: levelNumber
+
+                  onClicked: root.levelSelected(levelNumber)
+              }
+          }
+
       }
-      CustomButton {
-          text: qsTr("Quit")
 
-          onClicked: root.backRequest()
-      }
+      ImageButton {
+          Layout.alignment: Qt.AlignHCenter
 
-      Spacer {
-          Layout.fillHeight: true
+          width: 20
+          height: 20
+          source: qrc("/assets/icons/back-icon.svg")
+
+          onClicked: backRequest()
       }
   }
+
 }

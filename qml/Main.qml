@@ -34,6 +34,13 @@ GameWindow {
             }
         },
         State {
+            name: "levels"
+            PropertyChanges {
+                target: levelsScene
+                active: true
+            }
+        },
+        State {
             name: "game"
             PropertyChanges {
                 target: gameScene
@@ -44,10 +51,17 @@ GameWindow {
 
     state: "menu"
 
-    function startGame() {
+    function showMenu() {
+        state = "menu"
+    }
+    function showLevels() {
+        state = "levels"
+    }
+    function startLevel(number) {
+        gameScene.levelNumber = number
         state = "game"
     }
-    function quitGame() {
+    function quit() {
         // TODO: add a confirmation?
         Qt.quit();
     }
@@ -55,12 +69,21 @@ GameWindow {
     MainMenuScene {
         id: mainMenuScene
 
-        onStartGame: root.startGame()
-        onQuitGame: root.quitGame()
+        onStartGame: root.showLevels()
+        onBackRequest: root.quit()
+    }
+    LevelsScene {
+        id: levelsScene
+
+        onLevelSelected: startLevel(number)
+        onBackRequest: root.showMenu()
     }
     GameScene {
         id: gameScene
+
+        onBackRequest: root.showLevels()
     }
+
 
     // global tools
     readonly property url mainQmlPath: Qt.resolvedUrl("./")

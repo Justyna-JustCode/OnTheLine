@@ -25,6 +25,8 @@ import "../styles"
 Scene {
     property bool active: false
 
+    signal backRequest()
+
     Behavior on opacity {
         NumberAnimation { duration: Style.behavior.menuFadeTime }
     }
