@@ -1,3 +1,7 @@
+import QtQuick 2.12
+import QtQuick.Layouts 1.12
+import Felgo 3.0
+
 /********************************************
 ** On the line!
 ** Copyright 2021 Justyna JustCode
@@ -17,48 +21,46 @@
 **
 ********************************************/
 
-import Felgo 3.0
-import QtQuick 2.12
+import "../styles"
+import "../components"
 
-import "scenes"
+SceneBase {
+  id: root
 
-GameWindow {
-    id: root
+  signal startGame
+  signal quitGame
 
-    states: [
-        State {
-            name: "menu"
-            PropertyChanges {
-                target: mainMenuScene
-                active: true
-            }
-        },
-        State {
-            name: "game"
-            PropertyChanges {
-                target: gameScene
-                active: true
-            }
-        }
-    ]
+  // background
+  Rectangle {
+    id: background
 
-    state: "menu"
+    anchors.fill: parent
 
-    function startGame() {
-        state = "game"
-    }
-    function quitGame() {
-        // TODO: add a confirmation?
-        Qt.quit();
-    }
+    color: "gray"
+  }
 
-    MainMenuScene {
-        id: mainMenuScene
+  ColumnLayout {
+      anchors {
+          top: parent.top
+          bottom: parent.bottom
+          horizontalCenter: parent.horizontalCenter
 
-        onStartGame: root.startGame()
-        onQuitGame: root.quitGame()
-    }
-    GameScene {
-        id: gameScene
-    }
+          margins: Style.sizes.bigMargin
+      }
+
+      CustomButton {
+          text: qsTr("New game")
+
+          onClicked: root.startGame()
+      }
+      CustomButton {
+          text: qsTr("Quit")
+
+          onClicked: root.quitGame()
+      }
+
+      Spacer {
+          Layout.fillHeight: true
+      }
+  }
 }

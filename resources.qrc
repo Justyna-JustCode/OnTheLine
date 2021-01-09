@@ -1,6 +1,10 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml</file>
         <file>qml/Main.qml</file>
+        <file>qml/components/Spacer.qml</file>
+        <file>qml/scenes/MainMenuScene.qml</file>
+        <file>qml/scenes/SceneBase.qml</file>
+        <file>qml/styles/qmldir</file>
+        <file>qml/styles/Style.qml</file>
     </qresource>
 </RCC>

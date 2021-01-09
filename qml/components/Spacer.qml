@@ -17,48 +17,7 @@
 **
 ********************************************/
 
-import Felgo 3.0
-import QtQuick 2.12
+import QtQuick 2.0
 
-import "scenes"
-
-GameWindow {
-    id: root
-
-    states: [
-        State {
-            name: "menu"
-            PropertyChanges {
-                target: mainMenuScene
-                active: true
-            }
-        },
-        State {
-            name: "game"
-            PropertyChanges {
-                target: gameScene
-                active: true
-            }
-        }
-    ]
-
-    state: "menu"
-
-    function startGame() {
-        state = "game"
-    }
-    function quitGame() {
-        // TODO: add a confirmation?
-        Qt.quit();
-    }
-
-    MainMenuScene {
-        id: mainMenuScene
-
-        onStartGame: root.startGame()
-        onQuitGame: root.quitGame()
-    }
-    GameScene {
-        id: gameScene
-    }
+Item {
 }

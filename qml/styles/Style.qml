@@ -17,48 +17,17 @@
 **
 ********************************************/
 
-import Felgo 3.0
+pragma Singleton
 import QtQuick 2.12
 
-import "scenes"
+QtObject {
+    readonly property var sizes: QtObject {
+        readonly property int defaultPadding: 5
 
-GameWindow {
-    id: root
-
-    states: [
-        State {
-            name: "menu"
-            PropertyChanges {
-                target: mainMenuScene
-                active: true
-            }
-        },
-        State {
-            name: "game"
-            PropertyChanges {
-                target: gameScene
-                active: true
-            }
-        }
-    ]
-
-    state: "menu"
-
-    function startGame() {
-        state = "game"
-    }
-    function quitGame() {
-        // TODO: add a confirmation?
-        Qt.quit();
+        readonly property int bigMargin: 30
     }
 
-    MainMenuScene {
-        id: mainMenuScene
-
-        onStartGame: root.startGame()
-        onQuitGame: root.quitGame()
-    }
-    GameScene {
-        id: gameScene
+    readonly property var behavior: QtObject {
+        readonly property int menuFadeTime: 300
     }
 }

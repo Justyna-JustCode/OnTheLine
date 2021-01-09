@@ -17,48 +17,22 @@
 **
 ********************************************/
 
-import Felgo 3.0
 import QtQuick 2.12
+import QtQuick.Layouts 1.12
+import Felgo 3.0
 
-import "scenes"
+import "../styles"
+import "../components"
 
-GameWindow {
-    id: root
+SceneBase {
+  id: menuScene
 
-    states: [
-        State {
-            name: "menu"
-            PropertyChanges {
-                target: mainMenuScene
-                active: true
-            }
-        },
-        State {
-            name: "game"
-            PropertyChanges {
-                target: gameScene
-                active: true
-            }
-        }
-    ]
+  // background
+  Rectangle {
+    id: background
 
-    state: "menu"
+    anchors.fill: parent
 
-    function startGame() {
-        state = "game"
-    }
-    function quitGame() {
-        // TODO: add a confirmation?
-        Qt.quit();
-    }
-
-    MainMenuScene {
-        id: mainMenuScene
-
-        onStartGame: root.startGame()
-        onQuitGame: root.quitGame()
-    }
-    GameScene {
-        id: gameScene
-    }
+    color: "red"
+  }
 }
