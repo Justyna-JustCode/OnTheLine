@@ -61,4 +61,17 @@ GameWindow {
     GameScene {
         id: gameScene
     }
+
+    // global tools
+    readonly property url mainQmlPath: Qt.resolvedUrl("./")
+    function isLiveMode() {
+        return typeof felgoLiveEngine !== "undefined";
+    }
+    function qrc(relativePath) {
+        if (!isLiveMode() && DELIVERY_BUILD) {
+            return "qrc:" + relativePath;
+        }
+        console.log(mainQmlPath + "../" + relativePath)
+        return mainQmlPath + "../" + relativePath;
+    }
 }

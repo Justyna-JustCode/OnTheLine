@@ -21,6 +21,7 @@
 #include <FelgoApplication>
 
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 
 int main(int argc, char *argv[])
 {
@@ -38,8 +39,10 @@ int main(int argc, char *argv[])
    * See the pro file for more details.
    */
 #ifdef DELIVERY_BUILD
+  engine.rootContext()->setContextProperty("DELIVERY_BUILD", true);
   felgo.setMainQmlFileName(QStringLiteral("qrc:/qml/Main.qml"));
 #else
+  engine.rootContext()->setContextProperty("DELIVERY_BUILD", false);
   felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
 #endif
 

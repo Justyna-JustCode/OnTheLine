@@ -22,10 +22,10 @@ delivery {
     # the resources file for a faster compliation
     qmlFolder.source = qml
     DEPLOYMENTFOLDERS += qmlFolder
-}
 
-assetsFolder.source = assets
-DEPLOYMENTFOLDERS += assetsFolder
+    assetsFolder.source = assets
+    DEPLOYMENTFOLDERS += assetsFolder
+}
 
 SOURCES += main.cpp
 
