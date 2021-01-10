@@ -20,7 +20,7 @@
 import QtQuick 2.0
 import Felgo 3.0
 
-import "../styles"
+import "../constants"
 
 Scene {
     property bool active: false

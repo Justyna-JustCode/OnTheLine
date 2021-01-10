@@ -22,7 +22,7 @@ import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 import Felgo 3.0
 
-import "../styles"
+import "../constants"
 import "../components"
 import "../components/game"
 import "../logic"

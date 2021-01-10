@@ -20,7 +20,7 @@
 import Felgo 3.0
 import QtQuick 2.12
 
-import "../Styles"
+import "../constants"
 
 BaseObject {
     property int velocity: 100

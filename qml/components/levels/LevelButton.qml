@@ -20,7 +20,7 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
-import "../../styles"
+import "../../constants"
 
 Button {
     padding: Style.sizes.padding

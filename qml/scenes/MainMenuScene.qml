@@ -21,7 +21,7 @@ import Felgo 3.0
 **
 ********************************************/
 
-import "../styles"
+import "../constants"
 import "../components"
 
 SceneBase {
