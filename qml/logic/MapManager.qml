@@ -35,7 +35,7 @@ QtObject {
     }
 
     // levels format:
-    // <width>x<height>
+    // <height>x<width>
     // <row-secription>
     // <row-secription>
     //
@@ -56,7 +56,7 @@ QtObject {
             return
         }
 
-        var mapSize = Qt.size(sizeData[0], sizeData[1])
+        var mapSize = Qt.size(sizeData[1], sizeData[0])
         if (data.length !== mapSize.height + 1) {
             console.warn("Map data height mismatch")
             return

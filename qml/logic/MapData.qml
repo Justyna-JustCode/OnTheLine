@@ -20,7 +20,7 @@
 import QtQuick 2.12
 
 QtObject {
-    readonly property size size: Qt.size(content.length, content.length ? content[0].length : 0)
+    readonly property size size: Qt.size(content.length ? content[0].length : 0, content.length)
     property var content: []
 
     function clear() {

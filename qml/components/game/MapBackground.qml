@@ -32,12 +32,13 @@ Grid {
     rows: mapData.size.height
 
     Repeater {
-        model: root.columns * root.rows // number of all blocks
+        model: root.columns * root.rows // number of all fields
 
         // TODO: real nice look
         Rectangle {
             readonly property int row: index / root.columns
             readonly property int column: index - root.columns * row
+
             readonly property bool isEmpty: root.mapData.content[row][column] === '0' // in a level description 0 means empty field
 
             width: blockSize
