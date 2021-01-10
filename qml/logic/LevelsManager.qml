@@ -65,4 +65,9 @@ QtObject {
         priv.currentIndex = number
         priv.loadLevelData()
     }
+
+    function reload() {
+        priv.clearLevelData()
+        loadLevel(currentLevel)
+    }
 }

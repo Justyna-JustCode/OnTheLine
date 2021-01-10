@@ -39,10 +39,17 @@ SceneBase {
       successPopup.open()
   }
 
+  function restartLevel() {
+      levelActive = true
+      levelsManager.reload()
+  }
+
   function closeLevel() {
       levelActive = true
       root.backRequest()
   }
+
+  onLevelActiveChanged: console.log("!!!", levelActive)
 
   MenuBackground {}
 
@@ -62,6 +69,17 @@ SceneBase {
               source: qrc("/assets/icons/back-icon.svg")
 
               onClicked: root.closeLevel()
+          }
+
+          Spacer {
+              Layout.fillWidth: true
+          }
+
+          ImageButton {
+              Layout.alignment: Qt.AlignHCenter
+              source: qrc("/assets/icons/restart-icon.svg")
+
+              onClicked: root.restartLevel()
           }
       }
 
