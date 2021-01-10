@@ -17,28 +17,34 @@
 **
 ********************************************/
 
-pragma Singleton
+import Felgo 3.0
 import QtQuick 2.12
 
-QtObject {
-    readonly property var sizes: QtObject {
-        readonly property real padding: 5
-        readonly property real bigPadding: 10
+import "../../constants"
 
-        readonly property real margin: 15
-        readonly property real bigMargin: 30
+Item {
+    id: root
+    property TwoAxisController axisController
 
-        readonly property real hugeBorder: 7
+    Rectangle {
+        anchors.fill: parent
 
-        readonly property real defaultButtonSize: 40
-    }
+        radius: width / 2
+        color: "transparent"
+        opacity: Style.compontents.controlOpacity
 
-    readonly property var behavior: QtObject {
-        readonly property int menuFadeTime: 300
-    }
+        border {
+            width: Style.sizes.hugeBorder
+            color: "white"
+        }
 
-    readonly property var compontents: QtObject {
-        readonly property size controlSize: Qt.size(100, 100)
-        readonly property real controlOpacity: 0.7
+        Repeater {
+            model: [ Qt.LeftEdge, Qt.RightEdge, Qt.TopEdge, Qt.BottomEdge ]
+
+            ControlArrow {
+                axisController: root.axisController
+                edge: modelData
+            }
+        }
     }
 }

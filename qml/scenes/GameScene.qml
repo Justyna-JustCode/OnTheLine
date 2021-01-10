@@ -25,14 +25,13 @@ import Felgo 3.0
 import "../constants"
 import "../components"
 import "../components/game"
+import "../components/controls"
 import "../logic"
 
 SceneBase {
   id: root
 
   property bool levelActive: true
-
-  Keys.forwardTo: levelContent.moveController
 
   function handleLevelAccomplished() {
       levelActive = false
@@ -126,5 +125,17 @@ SceneBase {
               }
           }
       }
+  }
+
+  MoveControl {
+      anchors {
+          right: parent.right
+          bottom: parent.bottom
+      }
+
+      width: Style.compontents.controlSize.width
+      height: Style.compontents.controlSize.height
+
+      axisController: levelContent.moveController
   }
 }
