@@ -23,7 +23,7 @@ import QtQuick.Controls 2.12
 import "../../styles"
 
 Button {
-    padding: Style.sizes.defaultPadding
+    padding: Style.sizes.padding
 
     background: Rectangle {
         border {

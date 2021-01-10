@@ -22,7 +22,7 @@ import QtQuick 2.12
 
 QtObject {
     readonly property var sizes: QtObject {
-        readonly property int defaultPadding: 5
+        readonly property int padding: 5
         readonly property int bigPadding: 10
 
         readonly property int margin: 15
