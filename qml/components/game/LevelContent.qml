@@ -76,7 +76,7 @@ Item {
     PhysicsWorld {
         id: physicsWorld
 
-        debugDrawVisible: true // enable this for physics debugging
+//        debugDrawVisible: true // enable this for physics debugging
     }
 
     EntityManager {
