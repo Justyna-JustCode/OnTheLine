@@ -26,7 +26,7 @@ import "../../styles"
 Grid {
     id: root
     property MapData mapData
-    property real blockSize
+    property real fieldSize
 
     columns: mapData.size.width
     rows: mapData.size.height
@@ -39,8 +39,8 @@ Grid {
             readonly property int row: index / root.columns
             readonly property int column: index - root.columns * row
 
-            width: blockSize
-            height: blockSize
+            width: fieldSize
+            height: fieldSize
 
             opacity: mapData.isBlocker(row, column) ? 0 : 1
 

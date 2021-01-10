@@ -21,18 +21,18 @@ import Felgo 3.0
 import QtQuick 2.12
 
 EntityBase {
-    property real blockSize // a size of a single field (see WorldData)
+    property real fieldSize // a size of a single field (see WorldData)
 
     property point pos: Qt.size(0, 0)    // defines an object position an a map fields (see MapData)
     property real sizeModifier: 1   // defines an object size in a realtion to field size
 
     readonly property alias collider: collider
 
-    x: pos.x * blockSize
-    y: pos.y * blockSize
+    x: pos.x * fieldSize
+    y: pos.y * fieldSize
 
-    width: blockSize * sizeModifier
-    height: blockSize * sizeModifier
+    width: fieldSize * sizeModifier
+    height: fieldSize * sizeModifier
 
     BoxCollider {
         id: collider

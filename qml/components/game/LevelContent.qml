@@ -48,7 +48,7 @@ Item {
             for (var index in mapData.blockerFields) {
                 var fieldPos = mapData.blockerFields[index]
                 entityManager.createEntityFromComponentWithProperties(mapBlockerComponent,
-                                                                      { "blockSize": worldData.blockSize,
+                                                                      { "fieldSize": worldData.fieldSize,
                                                                         "pos": fieldPos })
             }
         }
@@ -66,7 +66,7 @@ Item {
         property var worldDataConnections: Connections {
             target: worldData
 
-            onBlockSizeChanged: priv.updateMapBlockers()
+            onFieldSizeChanged: priv.updateMapBlockers()
         }
     }
 
@@ -88,12 +88,12 @@ Item {
     Player {
         id: player
 
-        blockSize: worldData.blockSize
+        fieldSize: worldData.fieldSize
         pos: mapData.playerPos
     }
 
     Crate {
-        blockSize: worldData.blockSize
+        fieldSize: worldData.fieldSize
         pos: mapData.cratePos
     }
 }

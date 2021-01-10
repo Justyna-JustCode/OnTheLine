@@ -24,13 +24,13 @@ Item {
     property size mapSize: Qt.size(0, 0)
 
     // output data
-    readonly property size worldSize: Qt.size(mapSize.width * blockSize, mapSize.height * blockSize)
-    readonly property alias blockSize: priv.blockSize
+    readonly property size worldSize: Qt.size(mapSize.width * fieldSize, mapSize.height * fieldSize)
+    readonly property alias fieldSize: priv.fieldSize
 
     QtObject {
         id: priv
-        // a block size if the biggest possible size of a single item, to fit the mapData
-        readonly property real blockSize: {
+        // a field size is the biggest possible size of a single item, to fit a mapSize and worldSize
+        readonly property real fieldSize: {
             if (mapSize.width === 0 || mapSize.height === 0 ||
                     width === 0 || height === 0) {
                 return 0

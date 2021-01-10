@@ -67,7 +67,7 @@ SceneBase {
               worldSize: worldData.worldSize
 
               MapBackground {
-                  blockSize: worldData.blockSize
+                  fieldSize: worldData.fieldSize
                   mapData: mapManager.mapData
               }
 
