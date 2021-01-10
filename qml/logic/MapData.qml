@@ -51,6 +51,18 @@ QtObject {
     property var content: []
 
     readonly property point playerPos: priv.findItemPos(priv.player_indicator)
+    readonly property var blockerFields: {
+        var blockersList = []
+
+        for (var row = 0; row < size.height; ++row) {
+            for (var col = 0; col < size.width; ++col) {
+                if (content[row][col] === priv.blocker_indicator) {
+                    blockersList.push(Qt.point(col, row))
+                }
+            }
+        }
+        return blockersList
+    }
 
     function isBlocker(row, column) {
         if (row > size.height ||

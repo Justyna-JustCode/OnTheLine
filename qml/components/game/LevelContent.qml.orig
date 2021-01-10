@@ -1,0 +1,237 @@
+/********************************************
+** On the line!
+** Copyright 2021 Justyna JustCode
+**
+** This program is free software; you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation; either version 3 of the License, or
+** (at your option) any later version.
+**
+** This program is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
+**
+** You should have received a copy of the GNU General Public License
+** along with this program. If not, see <http://www.gnu.org/licenses/>.
+**
+********************************************/
+
+import Felgo 3.0
+import QtQuick 2.12
+import QtQuick.Controls 2.12
+
+import "../../logic"
+import "../../entities"
+
+Item {
+    id: root
+<<<<<<< Updated upstream
+
+    property var scene
+    property MapData mapData
+    property WorldData worldData
+
+    property alias moveController: player.moveController
+=======
+    readonly property string player_indicator: 'P'
+    readonly property string box_indicator: 'S'
+    readonly property string target_indicator: 'X'
+
+    property var scene
+    property var mapData: ({})
+    property WorldData worldData
+
+    property alias moveController: moveController
+
+    function findItemPos(mapData, indicator) {
+        if (!mapData.content) {
+            return Qt.point(0, 0)
+        }
+
+        var idx
+        var rowIdx = mapData.content.findIndex(function(array, idx) {
+            return array.includes(indicator);
+        });
+        if (rowIdx < 0) {
+            console.warn("Player not found on a map")
+            return Qt.point(0, 0)
+        }
+
+        var colIdx = mapData.content[rowIdx].indexOf(indicator)
+        if (colIdx < 0) {
+            console.warn("Player not found on a map")
+            return Qt.point(0, 0)
+        }
+
+        return Qt.point(colIdx, rowIdx)
+    }
+
+    property point playerPos: findItemPos(mapData, player_indicator)
+    property point boxPos: findItemPos(mapData, box_indicator)
+    property point targetPos: findItemPos(mapData, target_indicator)
+>>>>>>> Stashed changes
+
+    PhysicsWorld {
+        id: physicsWorld
+
+<<<<<<< Updated upstream
+        debugDrawVisible: true // enable this for physics debugging
+=======
+        debugDrawVisible: false // enable this for physics debugging
+>>>>>>> Stashed changes
+    }
+
+    EntityManager {
+        id: entityManager
+        entityContainer: scene
+    }
+
+    WorldWalls {
+        worldSize: Qt.size(root.width, root.height)
+    }
+
+<<<<<<< Updated upstream
+    Player {
+        id: player
+
+        blockSize: worldData.blockSize
+        pos: mapData.playerPos
+    }
+=======
+    function calculateMapBlockers() {
+        if (!mapData.size) {
+            return
+        }
+        entityManager.removeEntitiesByFilter(["invisibleBlocker"]);
+
+        // create middle walls
+        for (var row = 0; row < mapData.size.height; ++row) {
+            for (var col = 0; col < mapData.size.width; ++col) {
+                if (mapData.content[row][col] === '0') {
+                    entityManager.createEntityFromUrlWithProperties(qrc("qml/entities/InvisibleBlocker.qml"),
+                                                                    { "width": worldData.blockSize,
+                                                                        "height": worldData.blockSize,
+                                                                        "x": col * worldData.blockSize,
+                                                                        "y": row * worldData.blockSize }
+                                                                    )
+                }
+
+            }
+        }
+    }
+
+    onMapDataChanged: calculateMapBlockers()
+    onWorldDataChanged: calculateMapBlockers()
+
+    EntityBase {
+        id: target
+        entityType: "target"
+
+        x: targetPos.x * worldData.blockSize
+        y: targetPos.y * worldData.blockSize
+
+        width: worldData.blockSize
+        height: worldData.blockSize
+
+        Rectangle {
+            anchors.fill: parent
+
+            color: "white"
+            radius: 4
+        }
+
+        BoxCollider {
+            anchors {
+                fill: parent
+                margins: parent.width * 0.4
+            }
+            bodyType: Body.Static
+            collidesWith: Box.Category2
+
+            fixture.onBeginContact: {
+                var otherBody = other.getBody()
+                if (otherBody.target.entityType === "box") {
+                    backRequest()
+                }
+            }
+        }
+    }
+
+    EntityBase {
+        id: player
+        entityType: "player"
+
+        x: playerPos.x * worldData.blockSize
+        y: playerPos.y * worldData.blockSize
+
+        width: worldData.blockSize * 0.8
+        height: worldData.blockSize * 0.8
+
+        Rectangle {
+            anchors.fill: parent
+
+            color: "red"
+            radius: 4
+        }
+
+        BoxCollider {
+            property int velocity: 100
+
+            anchors.fill: parent
+            categories: Box.Category1
+
+            linearVelocity: Qt.point(moveController.xAxis * velocity, moveController.yAxis * (-velocity))
+        }
+
+        TwoAxisController {
+            id: moveController
+        }
+    }
+
+    EntityBase {
+        id: box
+        entityType: "box"
+
+        x: boxPos.x * worldData.blockSize
+        y: boxPos.y * worldData.blockSize
+
+        width: worldData.blockSize * 0.8
+        height: worldData.blockSize * 0.8
+
+        Rectangle {
+            anchors.fill: parent
+
+            color: "chocolate"
+            radius: 4
+        }
+
+        BoxCollider {
+            anchors.fill: parent
+
+            property bool collidingWithPlayer: false
+
+            categories: Box.Category2
+            fixedRotation: true
+
+            linearDamping: collidingWithPlayer ? 0 : 30
+            friction: 0.01
+            restitution: 0 // restitution is bounciness - a wooden box doesn't bounce
+
+            fixture.onBeginContact: {
+                var otherBody = other.getBody()
+                if (otherBody.target.entityType === "player") {
+                    collidingWithPlayer = true
+                }
+            }
+            fixture.onEndContact: {
+                var otherBody = other.getBody()
+                if (otherBody.target.entityType === "player") {
+                    collidingWithPlayer = false
+                }
+            }
+        }
+    }
+
+>>>>>>> Stashed changes
+}

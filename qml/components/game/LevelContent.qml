@@ -33,6 +33,43 @@ Item {
 
     property alias moveController: player.moveController
 
+    QtObject {
+        id: priv
+
+        property var mapBlockerComponent: Qt.createComponent(qrc("qml/entities/MapBlocker.qml"))
+        property string mapBlockerType: "mapBlocker"
+
+        function removeMapBlockers() {
+            entityManager.removeEntitiesByFilter([mapBlockerType]);
+        }
+
+        function addMapBlockers() {
+            // create map blockers in all blocker fields
+            for (var index in mapData.blockerFields) {
+                var fieldPos = mapData.blockerFields[index]
+                entityManager.createEntityFromComponentWithProperties(mapBlockerComponent,
+                                                                      { "blockSize": worldData.blockSize,
+                                                                        "pos": fieldPos })
+            }
+        }
+
+        function updateMapBlockers() {
+            removeMapBlockers()
+            addMapBlockers()
+        }
+
+        property var mapDataConnections: Connections {
+            target: mapData
+
+            onBlockerFieldsChanged: priv.updateMapBlockers()
+        }
+        property var worldDataConnections: Connections {
+            target: worldData
+
+            onBlockSizeChanged: priv.updateMapBlockers()
+        }
+    }
+
     PhysicsWorld {
         id: physicsWorld
 
