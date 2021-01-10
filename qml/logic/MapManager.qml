@@ -52,13 +52,13 @@ QtObject {
 
         var sizeData = data[0].split('x')
         if (sizeData.length !== 2) {
-            console.warn("An invalid map size, path:", currentPath)
+            console.warn("An invalid map size")
             return
         }
 
         var mapSize = Qt.size(sizeData[0], sizeData[1])
         if (data.length !== mapSize.height + 1) {
-            console.warn("Map data height mismatch, path:", currentPath)
+            console.warn("Map data height mismatch")
             return
         }
 
@@ -66,11 +66,11 @@ QtObject {
         for (var idx = 1; idx <= mapSize.height; ++idx) {
             var rowData = data[idx]
             if (rowData.length !== mapSize.width) {
-                console.warn("Map data width mismatch, path:", currentPath)
+                console.warn("Map data width mismatch")
                 return
             }
             if (!rowData.match(priv.valid_lvl_regexp)) {
-                console.warn("Map data contains invalid characters, path:", currentPath)
+                console.warn("Map data contains invalid characters")
                 return
             }
 
