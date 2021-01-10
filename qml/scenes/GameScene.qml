@@ -63,12 +63,21 @@ SceneBase {
       anchors.fill: parent
       spacing: 0
 
+      // TODO: real nice look
       RowLayout {
           ImageButton {
               Layout.alignment: Qt.AlignHCenter
               source: qrc("/assets/icons/back-icon.svg")
 
               onClicked: root.closeLevel()
+          }
+
+          Spacer {
+              Layout.fillWidth: true
+          }
+
+          CustomLabel {
+              text: qsTr("Level %1").arg(levelsManager.currentLevel + 1)
           }
 
           Spacer {
