@@ -49,6 +49,8 @@ SceneBase {
           Layout.fillWidth: true
           Layout.fillHeight: true
 
+          padding: Style.sizes.padding
+
           WorldData {
               id: worldData
               anchors.fill: parent

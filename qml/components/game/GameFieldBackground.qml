@@ -22,4 +22,15 @@ import QtQuick.Controls 2.12
 
 Rectangle {
     color: "black"
+
+    property real padding: 0
+    default property alias content: contentItem.data
+
+    Item  {
+        id: contentItem
+        anchors {
+            fill: parent
+            margins: padding
+        }
+    }
 }
