@@ -86,6 +86,13 @@ Item {
         worldSize: Qt.size(root.width, root.height)
     }
 
+    Target {
+        fieldSize: worldData.fieldSize
+        pos: mapData.targetPos
+
+        onHit: backRequest()    // TODO: success info and next level
+    }
+
     Player {
         id: player
 

@@ -23,41 +23,31 @@ import QtQuick 2.12
 import "../constants"
 
 BaseObject {
-    entityType: Statics.entityTypes.crate
+    id: root
+    entityType: Statics.entityTypes.target
 
-    sizeModifier: Statics.sizes.crateSizeModifier
+    signal hit()
 
     // TODO: some real nice look
     Rectangle {
         anchors.fill: parent
 
-        color: "chocolate"
+        color: "white"
         radius: 4
     }
 
     collider {
-        property bool collidingWithPlayer: false
-
-        categories: Statics.entityCategories.crate
+        anchors.margins: (1 - Statics.sizes.targetActionSizeModifier)  / 2 * parent.width
 
         fixedRotation: true
+        linearVelocity: Qt.point(0, 0)
 
-        linearDamping: collidingWithPlayer ? 0 : Statics.behavior.crateLinearDumpling
-        friction: Statics.behavior.crateFriction
-
-        // restitution is bounciness - a wooden box doesn't bounce
-        restitution: Statics.behavior.restitutionNoBounding
+        collidesWith: Statics.entityCategories.crate
 
         fixture.onBeginContact: {
             var otherBody = other.getBody()
-            if (otherBody.target.entityType === Statics.entityTypes.player) {
-                collidingWithPlayer = true
-            }
-        }
-        fixture.onEndContact: {
-            var otherBody = other.getBody()
-            if (otherBody.target.entityType === Statics.entityTypes.player) {
-                collidingWithPlayer = false
+            if (otherBody.target.entityType === Statics.entityTypes.crate) {
+                root.hit()
             }
         }
     }

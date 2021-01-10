@@ -38,7 +38,11 @@ BaseObject {
         radius: 4
     }
 
-    collider.linearVelocity: Qt.point(moveController.xAxis * velocity, moveController.yAxis * (-velocity))
+    collider {
+        categories: Statics.entityCategories.player
+
+        linearVelocity: Qt.point(moveController.xAxis * velocity, moveController.yAxis * (-velocity))
+    }
 
     TwoAxisController {
         id: moveController

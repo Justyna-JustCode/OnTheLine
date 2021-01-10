@@ -24,6 +24,7 @@ QtObject {
         readonly property string blocker_indicator: "0"
         readonly property string player_indicator: 'P'
         readonly property string crate_indicator: 'S'
+        readonly property string target_indicator: 'X'
 
         function findItemPos(field_indicator) {
             if (size.width === 0 || size.height === 0) {
@@ -53,6 +54,7 @@ QtObject {
 
     readonly property point playerPos: priv.findItemPos(priv.player_indicator)
     readonly property point cratePos: priv.findItemPos(priv.crate_indicator)
+    readonly property point targetPos: priv.findItemPos(priv.target_indicator)
 
     readonly property var blockerFields: {
         var blockersList = []

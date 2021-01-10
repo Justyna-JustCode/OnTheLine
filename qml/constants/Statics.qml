@@ -18,12 +18,17 @@
 ********************************************/
 
 pragma Singleton
+
+import Felgo 3.0
 import QtQuick 2.12
 
 QtObject {
     readonly property var sizes: QtObject {
         readonly property real playerSizeModifier: 0.7  // defines player size in relation to a field size
         readonly property real crateSizeModifier: 0.8   // defines crate size in relation to a field size
+
+        readonly property real targetActionSizeModifier: 0.2  // defines target collision reagion size
+                                                              // in relation to a field size
     }
 
     readonly property var behavior: QtObject {
@@ -39,5 +44,11 @@ QtObject {
         readonly property string mapBlocker: "mapBlocker"
         readonly property string player: "player"
         readonly property string crate: "create"
+        readonly property string target: "target"
+    }
+
+    readonly property var entityCategories: QtObject {
+        readonly property int player: Box.Category1
+        readonly property int crate: Box.Category2
     }
 }
