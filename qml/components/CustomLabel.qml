@@ -18,34 +18,8 @@
 ********************************************/
 
 import QtQuick 2.12
-import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 
-import "../../constants"
-import "../../components"
-
-// TODO: real nice look
-Popup {
-    id: root
-
-    signal showLevelsRequest()
-
-    anchors.centerIn: parent
-    margins: Style.sizes.bigMargin    // just in case if a popup goes big
-
-    contentItem: ColumnLayout {
-        CustomLabel {
-            text: qsTr("Level accomplished!")
-        }
-        CustomButton {
-            text: qsTr("Show levels")
-
-            onClicked: {
-                root.close()
-                root.showLevelsRequest()
-            }
-        }
-    }
-
-    closePolicy: Popup.CloseOnPressOutside
+Label {
+    // to common settings (fonts, etc.) for all texts in the application
 }
