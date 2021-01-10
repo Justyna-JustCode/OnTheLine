@@ -68,6 +68,15 @@ SceneBase {
                   blockSize: worldData.blockSize
                   mapData: mapManager.mapData
               }
+
+              LevelContent {
+                  id: levelContent
+                  anchors.fill: parent
+
+                  scene: root
+                  mapData: mapManager.mapData
+                  worldData: worldData
+              }
           }
       }
   }
