@@ -91,4 +91,9 @@ Item {
         blockSize: worldData.blockSize
         pos: mapData.playerPos
     }
+
+    Crate {
+        blockSize: worldData.blockSize
+        pos: mapData.cratePos
+    }
 }
