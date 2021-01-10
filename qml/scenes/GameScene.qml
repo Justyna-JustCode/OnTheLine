@@ -65,7 +65,7 @@ SceneBase {
       RowLayout {
           ImageButton {
               Layout.alignment: Qt.AlignHCenter
-              source: qrc("/assets/icons/back-icon.svg")
+              source: qrc("/assets/icons/back-icon.png")
 
               onClicked: root.closeLevel()
           }
@@ -84,7 +84,7 @@ SceneBase {
 
           ImageButton {
               Layout.alignment: Qt.AlignHCenter
-              source: qrc("/assets/icons/restart-icon.svg")
+              source: qrc("/assets/icons/restart-icon.png")
 
               onClicked: root.restartLevel()
           }

@@ -17,6 +17,7 @@
 **
 ********************************************/
 
+import Felgo 3.0
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
@@ -33,12 +34,12 @@ RoundButton {
     radius: width / 2
 
     contentItem: Item {
-        Image {
+        MultiResolutionImage {
             id: image
             anchors.fill: parent
 
-            sourceSize.width: contentItem.width
-            sourceSize.height: contentItem.height
+            width: contentItem.width
+            height: contentItem.height
         }
     }
 }
