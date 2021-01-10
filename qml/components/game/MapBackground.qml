@@ -39,12 +39,10 @@ Grid {
             readonly property int row: index / root.columns
             readonly property int column: index - root.columns * row
 
-            readonly property bool isEmpty: root.mapData.content[row][column] === '0' // in a level description 0 means empty field
-
             width: blockSize
             height: blockSize
 
-            opacity: isEmpty ? 0 : 1
+            opacity: mapData.isBlocker(row, column) ? 0 : 1
 
             color: "gray"
             border {

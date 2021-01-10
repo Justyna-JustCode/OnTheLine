@@ -40,7 +40,7 @@ QtObject {
     // <row-secription>
     //
     // available fields:
-    // 0 - empty field / wall
+    // 0 - empty field / blocker
     // 1 - floor
     // P - player starting position
     // S - crate starting position
