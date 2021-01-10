@@ -23,6 +23,8 @@ import QtQuick.Controls 2.12
 
 import "../../logic"
 import "../../entities"
+import "../../constants"
+
 
 Item {
     id: root
@@ -37,10 +39,9 @@ Item {
         id: priv
 
         property var mapBlockerComponent: Qt.createComponent(qrc("qml/entities/MapBlocker.qml"))
-        property string mapBlockerType: "mapBlocker"
 
         function removeMapBlockers() {
-            entityManager.removeEntitiesByFilter([mapBlockerType]);
+            entityManager.removeEntitiesByFilter([Statics.entityTypes.mapBlocker]);
         }
 
         function addMapBlockers() {

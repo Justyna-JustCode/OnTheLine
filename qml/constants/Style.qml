@@ -21,16 +21,6 @@ pragma Singleton
 import QtQuick 2.12
 
 QtObject {
-    readonly property var game: QtObject {
-        readonly property real restitutionNoBounding: 0  // a value of resitution that make object not bouncy
-
-        readonly property real playerSizeModifier: 0.7  // defines player size in relation to a field size
-        readonly property real crateSizeModifier: 0.8   // defines crate size in relation to a field size
-
-        readonly property real crateLinearDumpling: 30  // defines how fast crate will slow and stop after a contact
-        readonly property real crateFriction: 0.01      // defines a friction between crate and other objects
-    }
-
     readonly property var sizes: QtObject {
         readonly property int padding: 5
         readonly property int bigPadding: 10

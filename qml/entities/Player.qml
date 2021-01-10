@@ -26,9 +26,9 @@ BaseObject {
     property int velocity: 100
     readonly property alias moveController: moveController
 
-    entityType: "player"
+    entityType: Statics.entityTypes.player
 
-    sizeModifier: Style.game.playerSizeModifier
+    sizeModifier: Statics.sizes.playerSizeModifier
 
     // TODO: some real nice look
     Rectangle {

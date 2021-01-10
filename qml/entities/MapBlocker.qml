@@ -23,7 +23,7 @@ import QtQuick 2.12
 import "../constants"
 
 BaseObject {
-    entityType: "mapBlocker"
+    entityType: Statics.entityTypes.mapBlocker
 
     collider.bodyType: Body.Static
 }

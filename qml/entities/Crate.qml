@@ -23,9 +23,9 @@ import QtQuick 2.12
 import "../constants"
 
 BaseObject {
-    entityType: "crate"
+    entityType: Statics.entityTypes.crate
 
-    sizeModifier: Style.game.crateSizeModifier
+    sizeModifier: Statics.sizes.crateSizeModifier
 
     // TODO: some real nice look
     Rectangle {
@@ -40,21 +40,21 @@ BaseObject {
 
         fixedRotation: true
 
-        linearDamping: collidingWithPlayer ? 0 : Style.game.crateLinearDumpling
-        friction: Style.game.crateFriction
+        linearDamping: collidingWithPlayer ? 0 : Statics.behavior.crateLinearDumpling
+        friction: Statics.behavior.crateFriction
 
         // restitution is bounciness - a wooden box doesn't bounce
-        restitution: Style.game.restitutionNoBounding
+        restitution: Statics.behavior.restitutionNoBounding
 
         fixture.onBeginContact: {
             var otherBody = other.getBody()
-            if (otherBody.target.entityType === "player") {
+            if (otherBody.target.entityType === Statics.entityTypes.player) {
                 collidingWithPlayer = true
             }
         }
         fixture.onEndContact: {
             var otherBody = other.getBody()
-            if (otherBody.target.entityType === "player") {
+            if (otherBody.target.entityType === Statics.entityTypes.player) {
                 collidingWithPlayer = false
             }
         }

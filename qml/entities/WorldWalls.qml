@@ -20,13 +20,15 @@
 import Felgo 3.0
 import QtQuick 2.12
 
+import "../constants"
+
 Item {
     readonly property int wallThick: 1
     property size worldSize
 
     InvisibleBlocker {
         entityId: "leftWorldWall"
-        entityType: "wall"
+        entityType: Statics.entityTypes.wall
 
         x: -wallThick; y: -wallThick
         width: wallThick; height: worldSize.height + wallThick
@@ -34,7 +36,7 @@ Item {
 
     InvisibleBlocker {
         entityId: "rightWorldWall"
-        entityType: "wall"
+        entityType: Statics.entityTypes.wall
 
         x: worldSize.width; y: -wallThick
         width: wallThick; height: worldSize.height + wallThick
@@ -42,7 +44,7 @@ Item {
 
     InvisibleBlocker {
         entityId: "topWorldWall"
-        entityType: "wall"
+        entityType: Statics.entityTypes.wall
 
         x: -wallThick; y: -wallThick
         width: worldSize.width + wallThick; height: wallThick
@@ -50,7 +52,7 @@ Item {
 
     InvisibleBlocker {
         entityId: "bottomWorldWall"
-        entityType: "wall"
+        entityType: Statics.entityTypes.wall
 
         x: -wallThick; y: worldSize.height
         width: worldSize.width + wallThick; height: wallThick

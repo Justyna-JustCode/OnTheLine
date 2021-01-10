@@ -20,8 +20,10 @@
 import Felgo 3.0
 import QtQuick 2.12
 
+import "../constants"
+
 EntityBase {
-    entityType: "invisibleBlocker"
+    entityType: Statics.entityTypes.invisibleBlocker
 
     BoxCollider {
         bodyType: Body.Static
