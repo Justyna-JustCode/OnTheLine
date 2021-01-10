@@ -39,6 +39,8 @@ BaseObject {
     collider {
         anchors.margins: (1 - Statics.sizes.targetActionSizeModifier)  / 2 * parent.width
 
+        bodyType: Body.Static
+
         fixedRotation: true
         linearVelocity: Qt.point(0, 0)
 

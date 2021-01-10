@@ -30,14 +30,26 @@ import "../logic"
 SceneBase {
   id: root
 
+  property bool levelActive: true
+
   Keys.forwardTo: levelContent.moveController
+
+  function handleLevelAccomplished() {
+      levelActive = false
+      successPopup.open()
+  }
+
+  function closeLevel() {
+      levelActive = true
+      root.backRequest()
+  }
 
   MenuBackground {}
 
   LevelSuccessPopup {
       id: successPopup
 
-      onShowLevelsRequest: root.backRequest()
+      onShowLevelsRequest: root.closeLevel()
   }
 
   ColumnLayout {
@@ -49,7 +61,7 @@ SceneBase {
               Layout.alignment: Qt.AlignHCenter
               source: qrc("/assets/icons/back-icon.svg")
 
-              onClicked: root.backRequest()
+              onClicked: root.closeLevel()
           }
       }
 
@@ -85,7 +97,7 @@ SceneBase {
                   mapData: mapManager.mapData
                   worldData: worldData
 
-                  onLevelAccomplished: successPopup.open()
+                  onLevelAccomplished: root.handleLevelAccomplished()
               }
           }
       }
