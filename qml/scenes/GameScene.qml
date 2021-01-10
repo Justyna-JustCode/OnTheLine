@@ -30,9 +30,15 @@ import "../logic"
 SceneBase {
   id: root
 
+  Keys.forwardTo: levelContent.moveController
+
   MenuBackground {}
 
-  Keys.forwardTo: levelContent.moveController
+  LevelSuccessPopup {
+      id: successPopup
+
+      onShowLevelsRequest: root.backRequest()
+  }
 
   ColumnLayout {
       anchors.fill: parent
@@ -43,7 +49,7 @@ SceneBase {
               Layout.alignment: Qt.AlignHCenter
               source: qrc("/assets/icons/back-icon.svg")
 
-              onClicked: backRequest()
+              onClicked: root.backRequest()
           }
       }
 
@@ -78,6 +84,8 @@ SceneBase {
                   scene: root
                   mapData: mapManager.mapData
                   worldData: worldData
+
+                  onLevelAccomplished: successPopup.open()
               }
           }
       }

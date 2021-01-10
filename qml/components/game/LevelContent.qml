@@ -35,6 +35,8 @@ Item {
 
     property alias moveController: player.moveController
 
+    signal levelAccomplished()
+
     QtObject {
         id: priv
 
@@ -90,7 +92,7 @@ Item {
         fieldSize: worldData.fieldSize
         pos: mapData.targetPos
 
-        onHit: backRequest()    // TODO: success info and next level
+        onHit: root.levelAccomplished()
     }
 
     Player {
