@@ -23,33 +23,10 @@ import QtQuick.Controls 2.12
 import "../../logic"
 import "../../styles"
 
-Grid {
+Item {
     id: root
-    property MapData mapData
-    property real blockSize
+    property size worldSize: Qt.size(0, 0)
 
-    columns: mapData.size.width
-    rows: mapData.size.height
-
-    Repeater {
-        model: root.columns * root.rows // number of all blocks
-
-        // TODO: real nice look
-        Rectangle {
-            readonly property int row: index / root.columns
-            readonly property int column: index - root.columns * row
-            readonly property bool isEmpty: root.mapData.content[row][column] === '0' // in a level description 0 means empty field
-
-            width: blockSize
-            height: blockSize
-
-            opacity: isEmpty ? 0 : 1
-
-            color: "gray"
-            border {
-                width: 2
-                color: "white"
-            }
-        }
-    }
+    width: worldSize.width
+    height: worldSize.height
 }

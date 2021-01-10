@@ -23,14 +23,11 @@ QtObject {
     readonly property int count: priv.levelsFiles.length   // number of available levels
     readonly property alias currentLevel: priv.currentIndex
 
-    // details of a map for currently loaded level
-    property var currentMapData: ({})
-
     // an internal private object
     property QtObject priv: QtObject {
         id: priv
         readonly property string levels_dir: "levels/";
-        readonly property var valid_lvl_regexp: /[01SPX]/g;
+        readonly property string level_ext: "lvl";
 
         property var levelsFiles: []
 
@@ -38,49 +35,24 @@ QtObject {
         property url currentPath: levelsFiles.length ? qrc(levels_dir + levelsFiles[currentLevel]) : ""
 
         function clearLevelData() {
-            currentMapData = {}
+            mapManager.clear()
         }
 
         function loadLevelData() {
-            clearLevelData()
-
-            var levelDetails = fileUtils.readFile(currentPath).split('\n')
-            if (!levelDetails.length) {
+            var levelData = fileUtils.readFile(currentPath)
+            if (!levelData.length) {
                 console.warn("Level data missing, path:", currentPath)
                 return
             }
 
-            var sizeData = levelDetails[0].split('x')
-            if (sizeData.length !== 2) {
-                console.warn("An invalid level size, path:", currentPath)
-                return
-            }
-
-            var mapSize = Qt.size(sizeData[0], sizeData[1])
-            if (levelDetails.length !== mapSize.height + 1) {
-                console.warn("Level data mismatch, path:", currentPath)
-                return
-            }
-
-            var mapContent = []
-            for (var idx = 1; idx <= mapSize.height; ++idx) {
-                var rowData = levelDetails[idx]
-                if (!rowData.match(valid_lvl_regexp)) {
-                    console.warn("Level data contains invalid characters, path:", currentPath)
-                    return
-                }
-
-                mapContent.push(rowData)
-            }
-
-            currentMapData = { "size": mapSize, "content": mapContent }
+            mapManager.load(levelData)
         }
     }
 
     Component.onCompleted: initLevels()
 
     function initLevels() {
-        priv.levelsFiles = fileUtils.listFiles(qrc(priv.levels_dir), "*.lvl");
+        priv.levelsFiles = fileUtils.listFiles(qrc(priv.levels_dir), "*." + priv.level_ext);
     }
 
     function loadLevel(number) {

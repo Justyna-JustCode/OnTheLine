@@ -25,10 +25,10 @@ import Felgo 3.0
 import "../styles"
 import "../components"
 import "../components/game"
+import "../logic"
 
 SceneBase {
   id: root
-  property var mapData: levelsManager.currentMapData
 
   MenuBackground {}
 
@@ -49,8 +49,23 @@ SceneBase {
           Layout.fillWidth: true
           Layout.fillHeight: true
 
-          MapBackground {
-              mapData: root.mapData
+          WorldData {
+              id: worldData
+              anchors.fill: parent
+
+              mapSize: mapManager.mapData.size
+          }
+
+          MapBounds {
+              id: mapBounds
+              anchors.centerIn: parent
+
+              worldSize: worldData.worldSize
+
+              MapBackground {
+                  blockSize: worldData.blockSize
+                  mapData: mapManager.mapData
+              }
           }
       }
   }

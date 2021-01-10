@@ -91,6 +91,9 @@ GameWindow {
     LevelsManager {
         id: levelsManager
     }
+    MapManager {
+        id: mapManager
+    }
 
 
     // global tools
