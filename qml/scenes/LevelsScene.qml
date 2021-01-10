@@ -32,6 +32,10 @@ SceneBase {
 
   MenuBackground {}
 
+  TutorialPopup {
+      id: tutorialPopup
+  }
+
   ColumnLayout {
       anchors {
           fill: parent
@@ -57,7 +61,12 @@ SceneBase {
 
                   text: levelNumber
 
-                  onClicked: root.levelSelected(levelIndex)
+                  onClicked: {
+                      root.levelSelected(levelIndex)
+                      if (levelIndex == 0) {
+                          tutorialPopup.open()
+                      }
+                  }
               }
           }
 
