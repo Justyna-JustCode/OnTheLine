@@ -49,8 +49,6 @@ SceneBase {
       root.backRequest()
   }
 
-  onLevelActiveChanged: console.log("!!!", levelActive)
-
   MenuBackground {}
 
   LevelSuccessPopup {
