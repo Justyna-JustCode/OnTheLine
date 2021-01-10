@@ -32,6 +32,8 @@ SceneBase {
 
   MenuBackground {}
 
+  Keys.forwardTo: levelContent.moveController
+
   ColumnLayout {
       anchors.fill: parent
       spacing: 0

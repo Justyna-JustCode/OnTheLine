@@ -22,10 +22,35 @@ import QtQuick 2.12
 QtObject {
     property QtObject priv: QtObject {
         readonly property string blocker_indicator: "0";
+        readonly property string player_indicator: 'P'
+
+        function findItemPos(field_indicator) {
+            if (size.width === 0 || size.height === 0) {
+                return Qt.point(0, 0)
+            }
+
+            var rowIdx = content.findIndex(function(array, idx) {
+                return array.includes(field_indicator);
+            });
+            if (rowIdx < 0) {
+                console.warn("Field not found on a map:", field_indicator)
+                return Qt.point(0, 0)
+            }
+
+            var colIdx = content[rowIdx].indexOf(field_indicator)
+            if (colIdx < 0) {
+                console.warn("Field not found on a map:", field_indicator)
+                return Qt.point(0, 0)
+            }
+
+            return Qt.point(colIdx, rowIdx)
+        }
     }
 
     readonly property size size: Qt.size(content.length ? content[0].length : 0, content.length)
     property var content: []
+
+    readonly property point playerPos: priv.findItemPos(priv.player_indicator)
 
     function isBlocker(row, column) {
         if (row > size.height ||

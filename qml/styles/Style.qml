@@ -21,6 +21,10 @@ pragma Singleton
 import QtQuick 2.12
 
 QtObject {
+    readonly property var game: QtObject {
+        readonly property real playerSizeModifier: 0.8  // defines player size in relation to a field size
+    }
+
     readonly property var sizes: QtObject {
         readonly property int padding: 5
         readonly property int bigPadding: 10

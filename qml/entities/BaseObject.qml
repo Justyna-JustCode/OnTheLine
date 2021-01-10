@@ -17,35 +17,25 @@
 **
 ********************************************/
 
-import QtQuick 2.0
 import Felgo 3.0
+import QtQuick 2.12
 
-import "../styles"
+EntityBase {
+    property real blockSize // a size of a single field (see WorldData)
 
-Scene {
-    property bool active: false
+    property point pos: Qt.size(0, 0)    // defines an object position an a map fields (see MapData)
+    property real sizeModifier: 1   // defines an object size in a realtion to field size
 
-    signal backRequest()
+    readonly property alias collider: collider
 
-    Behavior on opacity {
-        NumberAnimation { duration: Style.behavior.menuFadeTime }
+    x: pos.x * blockSize
+    y: pos.y * blockSize
+
+    width: blockSize * sizeModifier
+    height: blockSize * sizeModifier
+
+    BoxCollider {
+        id: collider
+        anchors.fill: parent
     }
-
-    focus: active
-
-    // the "logical size" - the scene content is auto-scaled to match
-    // the gameWindow's size
-    width: 480
-    height: 320
-
-    // by default, set the opacity to 0
-    // We handle this property from PlatformerMain via PropertyChanges
-    opacity: active ? 1 : 0
-
-    // the scene is only visible if the opacity is > 0
-    // this improves the performance
-    visible: opacity > 0
-
-    // only enable scene if it is visible
-    enabled: visible
 }

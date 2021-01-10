@@ -26,9 +26,12 @@ import "../../entities"
 
 Item {
     id: root
+
     property var scene
-    property var mapData: ({})
+    property MapData mapData
     property WorldData worldData
+
+    property alias moveController: player.moveController
 
     PhysicsWorld {
         id: physicsWorld
@@ -39,5 +42,12 @@ Item {
     EntityManager {
         id: entityManager
         entityContainer: scene
+    }
+
+    Player {
+        id: player
+
+        blockSize: worldData.blockSize
+        pos: mapData.playerPos
     }
 }
