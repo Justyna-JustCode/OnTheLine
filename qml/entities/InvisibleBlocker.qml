@@ -19,39 +19,11 @@
 
 import Felgo 3.0
 import QtQuick 2.12
-import QtQuick.Controls 2.12
 
-import "../../logic"
-import "../../entities"
+EntityBase {
+    entityType: "invisibleBlocker"
 
-Item {
-    id: root
-
-    property var scene
-    property MapData mapData
-    property WorldData worldData
-
-    property alias moveController: player.moveController
-
-    PhysicsWorld {
-        id: physicsWorld
-
-        debugDrawVisible: true // enable this for physics debugging
-    }
-
-    EntityManager {
-        id: entityManager
-        entityContainer: scene
-    }
-
-    WorldWalls {
-        worldSize: Qt.size(root.width, root.height)
-    }
-
-    Player {
-        id: player
-
-        blockSize: worldData.blockSize
-        pos: mapData.playerPos
+    BoxCollider {
+        bodyType: Body.Static
     }
 }

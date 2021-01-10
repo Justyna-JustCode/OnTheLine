@@ -19,39 +19,40 @@
 
 import Felgo 3.0
 import QtQuick 2.12
-import QtQuick.Controls 2.12
-
-import "../../logic"
-import "../../entities"
 
 Item {
-    id: root
+    readonly property int wallThick: 1
+    property size worldSize
 
-    property var scene
-    property MapData mapData
-    property WorldData worldData
+    InvisibleBlocker {
+        entityId: "leftWorldWall"
+        entityType: "wall"
 
-    property alias moveController: player.moveController
-
-    PhysicsWorld {
-        id: physicsWorld
-
-        debugDrawVisible: true // enable this for physics debugging
+        x: -wallThick; y: -wallThick
+        width: wallThick; height: worldSize.height + wallThick
     }
 
-    EntityManager {
-        id: entityManager
-        entityContainer: scene
+    InvisibleBlocker {
+        entityId: "rightWorldWall"
+        entityType: "wall"
+
+        x: worldSize.width; y: -wallThick
+        width: wallThick; height: worldSize.height + wallThick
     }
 
-    WorldWalls {
-        worldSize: Qt.size(root.width, root.height)
+    InvisibleBlocker {
+        entityId: "topWorldWall"
+        entityType: "wall"
+
+        x: -wallThick; y: -wallThick
+        width: worldSize.width + wallThick; height: wallThick
     }
 
-    Player {
-        id: player
+    InvisibleBlocker {
+        entityId: "bottomWorldWall"
+        entityType: "wall"
 
-        blockSize: worldData.blockSize
-        pos: mapData.playerPos
+        x: -wallThick; y: worldSize.height
+        width: worldSize.width + wallThick; height: wallThick
     }
 }
