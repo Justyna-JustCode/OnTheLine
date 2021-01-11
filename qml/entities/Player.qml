@@ -31,19 +31,74 @@ BaseObject {
 
     property bool active
 
-    onActiveChanged: {
-        priv.pushing = false;    // we need to update pushign manually
-                                 // for a restart because end of contact is not called
-        sprites.updateAction()
-    }
-
     QtObject {
         id: priv
 
         property bool pushing: false
 
-        onPushingChanged: sprites.updateAction()
+        property int walkAction: {
+            if (moveController.xAxis > 0) {
+                return sprites.actions.walkRight
+            }
+            if (moveController.xAxis < 0) {
+                return sprites.actions.walkLeft
+            }
+            if (moveController.yAxis > 0) {
+                return sprites.actions.walkUp
+            }
+            if (moveController.yAxis < 0) {
+                return sprites.actions.walkDown
+            }
+
+            return -1
+        }
+        property int pushAction: {
+            if (moveController.xAxis > 0) {
+                return sprites.actions.pushRight
+            }
+            if (moveController.xAxis < 0) {
+                return sprites.actions.pushLeft
+            }
+            if (moveController.yAxis > 0) {
+                return sprites.actions.pushUp
+            }
+            if (moveController.yAxis < 0) {
+                return sprites.actions.pushDown
+            }
+
+            return -1
+        }
     }
+
+    states: [
+        State {
+            name: "idle"
+
+            PropertyChanges { target: priv; pushing: false }
+            PropertyChanges { target: sprites; currentAction: actions.stand }
+        },
+        State {
+            name: "walking"
+            PropertyChanges { target: sprites; currentAction: priv.walkAction }
+        },
+        State {
+            name: "pushing"
+            PropertyChanges { target: sprites; currentAction: priv.pushAction }
+        },
+        State {
+            name: "inactive"
+            PropertyChanges { target: sprites; currentAction: actions.cheer }
+        }
+    ]
+
+    // if not active -> "inactive"
+    // if pushing -> "pushing"
+    // if moving -> "walking"
+    // else -> "idle"
+    state:  root.active ?
+                (priv.pushing ? "pushing"
+                              : (moveController.moving ? "walking" : "idle"))
+              : "inactive"
 
     entityType: Statics.entityTypes.player
 
@@ -72,70 +127,12 @@ BaseObject {
 
     TwoAxisController {
         id: moveController
-
-        onXAxisChanged: sprites.updateAction()
-        onYAxisChanged: sprites.updateAction()
+        property bool moving: xAxis !== 0 || yAxis !== 0
     }
 
     PlayerSpriteSequence {
         id: sprites
 
         anchors.fill: parent
-
-        function updateAction() {
-            if (!root.active) {
-                currentAction = actions.cheer
-                return
-            }
-
-            if (priv.pushing) {
-                updatePush()
-                return
-            }
-
-            updateMove()
-        }
-
-        function updateMove() {
-            if (moveController.xAxis > 0) {
-                currentAction = actions.walkRight
-                return
-            }
-            if (moveController.xAxis < 0) {
-                currentAction = actions.walkLeft
-                return
-            }
-            if (moveController.yAxis > 0) {
-                currentAction = actions.walkUp
-                return
-            }
-            if (moveController.yAxis < 0) {
-                currentAction = actions.walkDown
-                return
-            }
-
-            return currentAction = actions.stand
-        }
-
-        function updatePush() {
-            if (moveController.xAxis > 0) {
-                currentAction = actions.pushRight
-                return
-            }
-            if (moveController.xAxis < 0) {
-                currentAction = actions.pushLeft
-                return
-            }
-            if (moveController.yAxis > 0) {
-                currentAction = actions.pushUp
-                return
-            }
-            if (moveController.yAxis < 0) {
-                currentAction = actions.pushDown
-                return
-            }
-
-            return currentAction = actions.stand
-        }
     }
 }
