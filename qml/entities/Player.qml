@@ -24,16 +24,24 @@ import "../constants"
 import "../entities/sprites"
 
 BaseObject {
+    id: root
+
     property int velocity: 100
     readonly property alias moveController: moveController
+
+    property bool active
+
+    onActiveChanged: {
+        sprites.updateAction()
+    }
 
     QtObject {
         id: priv
 
-        property bool pushing
+        property bool pushing: false
+
         onPushingChanged: sprites.updateAction()
     }
-
 
     entityType: Statics.entityTypes.player
 
@@ -41,6 +49,8 @@ BaseObject {
 
     collider {
         categories: Statics.entityCategories.player
+
+        active: root.active
 
         linearVelocity: Qt.point(moveController.xAxis * velocity, moveController.yAxis * (-velocity))
 
@@ -71,6 +81,11 @@ BaseObject {
         anchors.fill: parent
 
         function updateAction() {
+            if (!root.active) {
+                currentAction = actions.cheer
+                return
+            }
+
             if (priv.pushing) {
                 updatePush()
                 return

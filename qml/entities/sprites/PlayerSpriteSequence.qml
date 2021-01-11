@@ -27,14 +27,18 @@ SpriteSequence {
 
     readonly property QtObject actions: QtObject {
         property int stand: 0
+
         property int walkRight: 1
         property int walkLeft: 2
         property int walkUp: 3
         property int walkDown: 4
+
         property int pushRight: 5
         property int pushLeft: 6
         property int pushUp: 7
         property int pushDown: 8
+
+        property int cheer: 9
     }
 
     property int currentAction: actions.stand
@@ -64,6 +68,9 @@ SpriteSequence {
                 return "pushUp"
             case actions.pushDown:
                 return "pushDown"
+
+            case actions.cheer:
+                return "cheer"
             }
             return "unknown"
         }
@@ -109,5 +116,12 @@ SpriteSequence {
     PlayerSprite {
         name: priv.nameForAction(actions.pushDown)
         frameCount: 2
+    }
+
+    // other
+    PlayerSprite {
+        name: priv.nameForAction(actions.cheer)
+        frameCount: 2
+        frameRate: Statics.behavior.slowFrameRate
     }
 }

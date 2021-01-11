@@ -99,7 +99,7 @@ Item {
     Player {
         id: player
 
-        collider.active: scene.levelActive
+        active: scene.levelActive
 
         fieldSize: worldData.fieldSize
         pos: mapData.playerPos
