@@ -31,6 +31,10 @@ BaseObject {
     readonly property alias moveController: moveController
 
     property bool active
+    onActiveChanged: {
+        priv.pushing = false;    // we need to update pushign manually
+                                 // for a restart because end of contact is not called
+    }
 
     QtObject {
         id: priv
