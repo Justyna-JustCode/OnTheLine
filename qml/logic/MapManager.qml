@@ -44,7 +44,7 @@ QtObject {
     // 1 - floor
     // P - player starting position
     // S - crate starting position
-    // X - crate destination position
+    // X - crate destination position (need to be set in the last column)
     function load(dataBytes) {
         mapData.clear()
 
