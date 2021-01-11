@@ -93,7 +93,7 @@ SceneBase {
           Layout.fillWidth: true
           Layout.fillHeight: true
 
-          padding: Style.sizes.padding
+          padding: Style.sizes.padding + Statics.sizes.outsideWallThick
 
           WorldData {
               id: worldData

@@ -23,36 +23,37 @@ import QtQuick 2.12
 import "../constants"
 
 Item {
-    readonly property int wallThick: 1
+    readonly property int wallThick: Statics.sizes.outsideWallThick
     property size worldSize
 
-    InvisibleBlocker {
+    // TODO: improve with repeater, move more logic to Wall
+    Wall {
         entityId: "leftWorldWall"
-        entityType: Statics.entityTypes.wall
+        isHorizontal: false
 
         x: -wallThick; y: -wallThick
         width: wallThick; height: worldSize.height + wallThick
     }
 
-    InvisibleBlocker {
+    Wall {
         entityId: "rightWorldWall"
-        entityType: Statics.entityTypes.wall
+        isHorizontal: false
 
         x: worldSize.width; y: -wallThick
         width: wallThick; height: worldSize.height + wallThick
     }
 
-    InvisibleBlocker {
+    Wall {
         entityId: "topWorldWall"
-        entityType: Statics.entityTypes.wall
+        isHorizontal: true
 
         x: -wallThick; y: -wallThick
         width: worldSize.width + wallThick; height: wallThick
     }
 
-    InvisibleBlocker {
+    Wall {
         entityId: "bottomWorldWall"
-        entityType: Statics.entityTypes.wall
+        isHorizontal: true
 
         x: -wallThick; y: worldSize.height
         width: worldSize.width + wallThick; height: wallThick

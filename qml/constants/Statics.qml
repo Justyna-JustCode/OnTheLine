@@ -29,6 +29,8 @@ QtObject {
 
         readonly property real targetActionSizeModifier: 0.2  // defines target collision reagion size
                                                               // in relation to a field size
+
+        readonly property real outsideWallThick: 10  // defines a size of wall around the game play
     }
 
     readonly property var behavior: QtObject {
