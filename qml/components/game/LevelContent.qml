@@ -51,7 +51,8 @@ Item {
             for (var index in mapData.blockerFields) {
                 var fieldPos = mapData.blockerFields[index]
                 entityManager.createEntityFromComponentWithProperties(mapBlockerComponent,
-                                                                      { "fieldSize": worldData.fieldSize,
+                                                                      { "parent": root,
+                                                                        "fieldSize": worldData.fieldSize,
                                                                         "pos": fieldPos })
             }
         }

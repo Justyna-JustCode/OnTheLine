@@ -17,6 +17,7 @@
 **
 ********************************************/
 
+import Felgo 3.0
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
@@ -34,21 +35,11 @@ Grid {
     Repeater {
         model: root.columns * root.rows // number of all fields
 
-        // TODO: real nice look
-        Rectangle {
-            readonly property int row: index / root.columns
-            readonly property int column: index - root.columns * row
-
+        MultiResolutionImage {
             width: fieldSize
             height: fieldSize
 
-            opacity: mapData.isBlocker(row, column) ? 0 : 1
-
-            color: "gray"
-            border {
-                width: 2
-                color: "white"
-            }
+            source: qrc("assets/game/floor.png")
         }
     }
 }

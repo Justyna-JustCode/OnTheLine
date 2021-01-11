@@ -26,4 +26,10 @@ BaseObject {
     entityType: Statics.entityTypes.mapBlocker
 
     collider.bodyType: Body.Static
+
+    MultiResolutionImage {
+        anchors.fill: parent
+
+        source: qrc("assets/game/blocker.png")
+    }
 }
