@@ -35,6 +35,7 @@ QtObject {
 
     readonly property var behavior: QtObject {
         readonly property int menuFadeTime: 300
+        readonly property real backgroundMusicVolume: 0.2
     }
 
     readonly property var compontents: QtObject {

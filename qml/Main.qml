@@ -20,6 +20,7 @@
 import Felgo 3.0
 import QtQuick 2.12
 
+import "constants"
 import "scenes"
 import "logic"
 
@@ -46,6 +47,10 @@ GameWindow {
             PropertyChanges {
                 target: gameScene
                 active: true
+            }
+            PropertyChanges {
+                target: backgroundMusic
+                active: false
             }
         }
     ]
@@ -86,6 +91,22 @@ GameWindow {
 
         onBackRequest: root.showLevels()
     }
+
+    BackgroundMusic {
+        id: backgroundMusic
+        property bool active: true
+
+        onActiveChanged: {
+            if (active) {
+                play()
+            } else {
+                pause()
+            }
+        }
+
+        source: qrc("assets/sounds/menu-background.mp3")
+        volume: Style.behavior.backgroundMusicVolume
+     }
 
     // logic
     LevelsManager {
