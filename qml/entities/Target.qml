@@ -28,14 +28,6 @@ BaseObject {
 
     signal hit()
 
-    // TODO: some real nice look
-    Rectangle {
-        anchors.fill: parent
-
-        color: "white"
-        radius: 4
-    }
-
     collider {
         anchors.margins: (1 - Statics.sizes.targetActionSizeModifier)  / 2 * parent.width
 
@@ -52,5 +44,11 @@ BaseObject {
                 root.hit()
             }
         }
+    }
+
+    MultiResolutionImage {
+        anchors.fill: parent
+
+        source: qrc("assets/game/target.png")
     }
 }

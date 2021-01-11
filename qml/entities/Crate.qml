@@ -27,14 +27,6 @@ BaseObject {
 
     sizeModifier: Statics.sizes.crateSizeModifier
 
-    // TODO: some real nice look
-    Rectangle {
-        anchors.fill: parent
-
-        color: "chocolate"
-        radius: 4
-    }
-
     collider {
         property bool collidingWithPlayer: false
 
@@ -61,4 +53,11 @@ BaseObject {
             }
         }
     }
+
+    MultiResolutionImage {
+        anchors.fill: parent
+
+        source: qrc("assets/game/crate.png")
+    }
+
 }
