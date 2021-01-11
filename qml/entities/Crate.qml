@@ -21,20 +21,26 @@ import Felgo 3.0
 import QtQuick 2.12
 
 import "../constants"
+import "../components"
 
 BaseObject {
     entityType: Statics.entityTypes.crate
-
     sizeModifier: Statics.sizes.crateSizeModifier
 
-    collider {
-        property bool collidingWithPlayer: false
+    QtObject {
+        id: priv
 
+        property bool beingPushed: false
+        property bool moving: (collider.linearVelocity.x !== 0) ||
+                              (collider.linearVelocity.y !== 0)
+    }
+
+    collider {
         categories: Statics.entityCategories.crate
 
         fixedRotation: true
 
-        linearDamping: collidingWithPlayer ? 0 : Statics.behavior.crateLinearDumpling
+        linearDamping: priv.beingPushed ? 0 : Statics.behavior.crateLinearDumpling
         friction: Statics.behavior.crateFriction
 
         // restitution is bounciness - a wooden box doesn't bounce
@@ -43,13 +49,13 @@ BaseObject {
         fixture.onBeginContact: {
             var otherBody = other.getBody()
             if (otherBody.target.entityType === Statics.entityTypes.player) {
-                collidingWithPlayer = true
+                priv.beingPushed = true
             }
         }
         fixture.onEndContact: {
             var otherBody = other.getBody()
             if (otherBody.target.entityType === Statics.entityTypes.player) {
-                collidingWithPlayer = false
+                priv.beingPushed = false
             }
         }
     }
@@ -60,4 +66,8 @@ BaseObject {
         source: qrc("assets/game/crate.png")
     }
 
+    CustomSoundEffect {
+        active: priv.moving // playing if moving
+        source: qrc("assets/sounds/push.wav")
+    }
 }

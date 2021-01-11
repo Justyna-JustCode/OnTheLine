@@ -17,30 +17,22 @@
 **
 ********************************************/
 
-pragma Singleton
 import QtQuick 2.12
+import QtMultimedia 5.0 // required for SoundEffect.Infinite enum value for infinite looping
 
-QtObject {
-    readonly property var sizes: QtObject {
-        readonly property real padding: 5
-        readonly property real bigPadding: 10
+import "../constants"
 
-        readonly property real margin: 15
-        readonly property real bigMargin: 30
+SoundEffect {
+    property bool active: false
 
-        readonly property real hugeBorder: 7
-
-        readonly property real defaultButtonSize: 40
+    onActiveChanged: {
+        if (active) {
+            play()
+        } else {
+            stop()
+        }
     }
 
-    readonly property var behavior: QtObject {
-        readonly property int menuFadeTime: 300
-        readonly property real backgroundMusicVolume: 0.2
-        readonly property real soundEffectVolume: 0.3
-    }
-
-    readonly property var compontents: QtObject {
-        readonly property size controlSize: Qt.size(100, 100)
-        readonly property real controlOpacity: 0.7
-    }
+    volume: Style.behavior.soundEffectVolume
+    loops: SoundEffect.Infinite
 }

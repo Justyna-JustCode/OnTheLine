@@ -21,6 +21,7 @@ import Felgo 3.0
 import QtQuick 2.12
 
 import "../constants"
+import "../components"
 import "../entities/sprites"
 
 BaseObject {
@@ -80,14 +81,17 @@ BaseObject {
         State {
             name: "walking"
             PropertyChanges { target: sprites; currentAction: priv.walkAction }
+            PropertyChanges { target: walkingSound; active: true  }
         },
         State {
             name: "pushing"
             PropertyChanges { target: sprites; currentAction: priv.pushAction }
+            PropertyChanges { target: walkingSound; active: true  }
         },
         State {
             name: "inactive"
             PropertyChanges { target: sprites; currentAction: actions.cheer }
+            PropertyChanges { target: cheerSound; active: true  }
         }
     ]
 
@@ -134,5 +138,18 @@ BaseObject {
         id: sprites
 
         anchors.fill: parent
+    }
+
+    // sounds
+    CustomSoundEffect {
+        id: walkingSound
+
+        source: qrc("assets/sounds/walk.wav")
+    }
+    CustomSoundEffect {
+        id: cheerSound
+
+        loops: 0    // not to loop, just play once
+        source: qrc("assets/sounds/cheer.wav")
     }
 }
