@@ -36,6 +36,10 @@ EntityBase {
 
     BoxCollider {
         id: collider
+
+        property bool moving: (collider.linearVelocity.x !== 0) ||
+                              (collider.linearVelocity.y !== 0)
+
         anchors.fill: parent
     }
 }

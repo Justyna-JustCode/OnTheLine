@@ -31,8 +31,7 @@ BaseObject {
         id: priv
 
         property bool beingPushed: false
-        property bool moving: (collider.linearVelocity.x !== 0) ||
-                              (collider.linearVelocity.y !== 0)
+        readonly property bool moving: collider.moving
     }
 
     collider {

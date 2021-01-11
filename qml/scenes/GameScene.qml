@@ -31,21 +31,22 @@ import "../logic"
 SceneBase {
   id: root
 
-  property bool levelActive: true
+  property bool levelFinished: false
+  readonly property bool levelActive: active && !levelFinished
 
   function handleLevelAccomplished() {
-      levelActive = false
+      levelFinished = true
       successPopup.open()
   }
 
   function restartLevel() {
-      levelActive = true
       levelsManager.reload()
+      levelFinished = false
   }
 
   function closeLevel() {
-      levelActive = true
       root.backRequest()
+      levelFinished = false
   }
 
   MenuBackground {}
@@ -64,7 +65,7 @@ SceneBase {
       RowLayout {
           ImageButton {
               Layout.alignment: Qt.AlignHCenter
-              source: qrc("/assets/icons/back-icon.png")
+              source: qrc("assets/icons/back-icon.png")
 
               onClicked: root.closeLevel()
           }
@@ -83,7 +84,7 @@ SceneBase {
 
           ImageButton {
               Layout.alignment: Qt.AlignHCenter
-              source: qrc("/assets/icons/restart-icon.png")
+              source: qrc("assets/icons/restart-icon.png")
 
               onClicked: root.restartLevel()
           }

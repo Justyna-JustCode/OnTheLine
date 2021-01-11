@@ -32,14 +32,28 @@ BaseObject {
 
     property bool active
     onActiveChanged: {
-        priv.pushing = false;    // we need to update pushign manually
-                                 // for a restart because end of contact is not called
+        if (active == false) {
+            priv.pushing = false;    // we need to update pushign manually
+                                     // for a restart because end of contact is not called
+        } else {
+            priv.cheering = false;  // we need stop cheering for next level
+        }
+
+        priv.updateState()
     }
+
+    function cheer() {
+        priv.cheering = true
+        priv.updateState()
+    }
+
 
     QtObject {
         id: priv
 
+        property bool cheering: false
         property bool pushing: false
+        readonly property bool moving: collider.moving
 
         property int walkAction: {
             if (moveController.xAxis > 0) {
@@ -73,6 +87,32 @@ BaseObject {
 
             return -1
         }
+
+        onPushingChanged: priv.updateState()
+        onMovingChanged: priv.updateState()
+
+
+        // if pushing -> "pushing"
+        // if moving -> "walking"
+        // else -> "idle"
+        function updateState() {
+            if (priv.cheering) {
+                state = "cheering"
+                return
+            }
+
+            if (priv.pushing) {
+                state = "pushing"
+                return
+            }
+
+            if (priv.moving) {
+                state = "walking"
+                return
+            }
+
+            state = "idle"
+        }
     }
 
     states: [
@@ -93,20 +133,12 @@ BaseObject {
             PropertyChanges { target: walkingSound; active: true  }
         },
         State {
-            name: "inactive"
+            name: "cheering"
             PropertyChanges { target: sprites; currentAction: actions.cheer }
             PropertyChanges { target: cheerSound; active: true  }
         }
     ]
-
-    // if not active -> "inactive"
-    // if pushing -> "pushing"
-    // if moving -> "walking"
-    // else -> "idle"
-    state:  root.active ?
-                (priv.pushing ? "pushing"
-                              : (moveController.moving ? "walking" : "idle"))
-              : "inactive"
+    state: "idle"
 
     entityType: Statics.entityTypes.player
 
@@ -135,7 +167,6 @@ BaseObject {
 
     TwoAxisController {
         id: moveController
-        property bool moving: xAxis !== 0 || yAxis !== 0
     }
 
     PlayerSpriteSequence {

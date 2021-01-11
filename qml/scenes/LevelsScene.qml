@@ -74,7 +74,7 @@ SceneBase {
 
       ImageButton {
           Layout.alignment: Qt.AlignHCenter
-          source: qrc("/assets/icons/back-icon.png")
+          source: qrc("assets/icons/back-icon.png")
 
           onClicked: backRequest()
       }

@@ -37,10 +37,15 @@ Item {
 
     signal levelAccomplished()
 
+    function handleLvelAccomplished() {
+        player.cheer()
+        levelAccomplished()
+    }
+
     QtObject {
         id: priv
 
-        property var mapBlockerComponent: Qt.createComponent(qrc("qml/entities/MapBlocker.qml"))
+        property var mapBlockerComponent: Qt.createComponent(qrc("///qml/entities/MapBlocker.qml"))
 
         function removeMapBlockers() {
             entityManager.removeEntitiesByFilter([Statics.entityTypes.mapBlocker]);
@@ -93,7 +98,7 @@ Item {
         fieldSize: worldData.fieldSize
         pos: mapData.targetPos
 
-        onHit: root.levelAccomplished()
+        onHit: root.handleLvelAccomplished()
     }
 
     Player {
