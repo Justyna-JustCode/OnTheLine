@@ -31,6 +31,10 @@ SpriteSequence {
         property int walkLeft: 2
         property int walkUp: 3
         property int walkDown: 4
+        property int pushRight: 5
+        property int pushLeft: 6
+        property int pushUp: 7
+        property int pushDown: 8
     }
 
     property int currentAction: actions.stand
@@ -42,6 +46,7 @@ SpriteSequence {
             switch (action) {
             case actions.stand:
                 return "stand"
+
             case actions.walkRight:
                 return "walkRight"
             case actions.walkLeft:
@@ -50,15 +55,27 @@ SpriteSequence {
                 return "walkUp"
             case actions.walkDown:
                 return "walkDown"
+
+            case actions.pushRight:
+                return "pushRight"
+            case actions.pushLeft:
+                return "pushLeft"
+            case actions.pushUp:
+                return "pushUp"
+            case actions.pushDown:
+                return "pushDown"
             }
             return "unknown"
         }
     }
 
     // TODO: check again if repeater can be used here
+    // stand
     PlayerSprite {
         name: priv.nameForAction(actions.stand)
     }
+
+    // walk
     PlayerSprite {
         name: priv.nameForAction(actions.walkRight)
         frameCount: 8
@@ -73,6 +90,24 @@ SpriteSequence {
     }
     PlayerSprite {
         name: priv.nameForAction(actions.walkDown)
+        frameCount: 2
+    }
+
+    // push
+    PlayerSprite {
+        name: priv.nameForAction(actions.pushRight)
+        frameCount: 4
+    }
+    PlayerSprite {
+        name: priv.nameForAction(actions.pushLeft)
+        frameCount: 4
+    }
+    PlayerSprite {
+        name: priv.nameForAction(actions.pushUp)
+        frameCount: 2
+    }
+    PlayerSprite {
+        name: priv.nameForAction(actions.pushDown)
         frameCount: 2
     }
 }

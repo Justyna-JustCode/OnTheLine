@@ -27,6 +27,14 @@ BaseObject {
     property int velocity: 100
     readonly property alias moveController: moveController
 
+    QtObject {
+        id: priv
+
+        property bool pushing
+        onPushingChanged: sprites.updateAction()
+    }
+
+
     entityType: Statics.entityTypes.player
 
     sizeModifier: Statics.sizes.playerSizeModifier
@@ -35,19 +43,41 @@ BaseObject {
         categories: Statics.entityCategories.player
 
         linearVelocity: Qt.point(moveController.xAxis * velocity, moveController.yAxis * (-velocity))
+
+        fixture.onBeginContact: {
+            var otherBody = other.getBody()
+            if (otherBody.target.entityType === Statics.entityTypes.crate) {
+                priv.pushing = true
+            }
+        }
+        fixture.onEndContact: {
+            var otherBody = other.getBody()
+            if (otherBody.target.entityType === Statics.entityTypes.crate) {
+                priv.pushing = false
+            }
+        }
     }
 
     TwoAxisController {
         id: moveController
 
-        onXAxisChanged: sprites.updateMove()
-        onYAxisChanged: sprites.updateMove()
+        onXAxisChanged: sprites.updateAction()
+        onYAxisChanged: sprites.updateAction()
     }
 
     PlayerSpriteSequence {
         id: sprites
 
         anchors.fill: parent
+
+        function updateAction() {
+            if (priv.pushing) {
+                updatePush()
+                return
+            }
+
+            updateMove()
+        }
 
         function updateMove() {
             if (moveController.xAxis > 0) {
@@ -67,7 +97,28 @@ BaseObject {
                 return
             }
 
-            currentAction = actions.stand
+            return currentAction = actions.stand
+        }
+
+        function updatePush() {
+            if (moveController.xAxis > 0) {
+                currentAction = actions.pushRight
+                return
+            }
+            if (moveController.xAxis < 0) {
+                currentAction = actions.pushLeft
+                return
+            }
+            if (moveController.yAxis > 0) {
+                currentAction = actions.pushUp
+                return
+            }
+            if (moveController.yAxis < 0) {
+                currentAction = actions.pushDown
+                return
+            }
+
+            return currentAction = actions.stand
         }
     }
 }
