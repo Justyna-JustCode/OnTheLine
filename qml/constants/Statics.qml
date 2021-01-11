@@ -36,6 +36,8 @@ QtObject {
 
         readonly property real crateLinearDumpling: 30  // defines how fast crate will slow and stop after a contact
         readonly property real crateFriction: 0.01      // defines a friction between crate and other objects
+
+        readonly property int defaultFrameRate: 16;    // a default value of frame count for sprite
     }
 
     readonly property var entityTypes: QtObject {

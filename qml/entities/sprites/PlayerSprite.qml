@@ -20,22 +20,16 @@
 import Felgo 3.0
 import QtQuick 2.12
 
-EntityBase {
-    property real fieldSize // a size of a single field (see WorldData)
+import "../../constants"
 
-    property point pos: Qt.point(0, 0)    // defines an object position an a map fields (see MapData)
-    property real sizeModifier: 1   // defines an object size in a realtion to field size
+Sprite {
+    readonly property string imagePathTemplate: "assets/game/sprites/player/player-%1.png"
 
-    readonly property alias collider: collider
+    frameCount: 1
 
-    x: pos.x * fieldSize
-    y: pos.y * fieldSize
+    frameWidth: 192
+    frameHeight: 200
+    frameRate: Statics.behavior.defaultFrameRate
 
-    width: fieldSize * sizeModifier
-    height: fieldSize * sizeModifier
-
-    BoxCollider {
-        id: collider
-        anchors.fill: parent
-    }
+    source: qrc(imagePathTemplate.arg(name))
 }

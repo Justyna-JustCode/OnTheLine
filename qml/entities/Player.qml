@@ -21,6 +21,7 @@ import Felgo 3.0
 import QtQuick 2.12
 
 import "../constants"
+import "../entities/sprites"
 
 BaseObject {
     property int velocity: 100
@@ -30,14 +31,6 @@ BaseObject {
 
     sizeModifier: Statics.sizes.playerSizeModifier
 
-    // TODO: some real nice look
-    Rectangle {
-        anchors.fill: parent
-
-        color: "red"
-        radius: 4
-    }
-
     collider {
         categories: Statics.entityCategories.player
 
@@ -46,5 +39,35 @@ BaseObject {
 
     TwoAxisController {
         id: moveController
+
+        onXAxisChanged: sprites.updateMove()
+        onYAxisChanged: sprites.updateMove()
+    }
+
+    PlayerSpriteSequence {
+        id: sprites
+
+        anchors.fill: parent
+
+        function updateMove() {
+            if (moveController.xAxis > 0) {
+                currentAction = actions.walkRight
+                return
+            }
+            if (moveController.xAxis < 0) {
+                currentAction = actions.walkLeft
+                return
+            }
+            if (moveController.yAxis > 0) {
+                currentAction = actions.walkUp
+                return
+            }
+            if (moveController.yAxis < 0) {
+                currentAction = actions.walkDown
+                return
+            }
+
+            currentAction = actions.stand
+        }
     }
 }
