@@ -7,7 +7,6 @@
         <file>qml/styles/qmldir</file>
         <file>qml/styles/Style.qml</file>
         <file>assets/icons/back-icon.svg</file>
-        <file>assets/felgo-logo.png</file>
         <file>qml/components/CustomButton.qml</file>
         <file>qml/components/ImageButton.qml</file>
         <file>qml/components/MenuBackground.qml</file>
