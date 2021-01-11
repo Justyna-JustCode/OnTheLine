@@ -36,6 +36,13 @@ GameWindow {
             }
         },
         State {
+            name: "about"
+            PropertyChanges {
+                target: aboutScene
+                active: true
+            }
+        },
+        State {
             name: "levels"
             PropertyChanges {
                 target: levelsScene
@@ -60,6 +67,9 @@ GameWindow {
     function showMenu() {
         state = "menu"
     }
+    function showAbout() {
+        state = "about"
+    }
     function showLevels() {
         state = "levels"
     }
@@ -77,9 +87,14 @@ GameWindow {
     MainMenuScene {
         id: mainMenuScene
 
-        onStartGame: root.showLevels()
+        onStartGameRequest: root.showLevels()
+        onShowAboutRequest: root.showAbout()
         onBackRequest: root.quit()
     }
+    AboutScene {
+        id: aboutScene
+    }
+
     LevelsScene {
         id: levelsScene
 

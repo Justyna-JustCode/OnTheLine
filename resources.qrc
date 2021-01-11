@@ -79,5 +79,6 @@
         <file>levels/1.lvl</file>
         <file>levels/2.lvl</file>
         <file>levels/3.lvl</file>
+        <file>qml/scenes/AboutScene.qml</file>
     </qresource>
 </RCC>

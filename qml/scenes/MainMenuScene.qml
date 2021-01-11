@@ -27,7 +27,8 @@ import "../components"
 SceneBase {
   id: root
 
-  signal startGame
+  signal startGameRequest
+  signal showAboutRequest
 
   MenuBackground {}
 
@@ -43,7 +44,12 @@ SceneBase {
       CustomButton {
           text: qsTr("Start game")
 
-          onClicked: root.startGame()
+          onClicked: root.startGameRequest()
+      }
+      CustomButton {
+          text: qsTr("About && Attribution")
+
+          onClicked: root.showAboutRequest()
       }
       CustomButton {
           text: qsTr("Quit")
