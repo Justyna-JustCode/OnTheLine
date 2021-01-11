@@ -4,14 +4,80 @@
         <file>qml/components/Spacer.qml</file>
         <file>qml/scenes/MainMenuScene.qml</file>
         <file>qml/scenes/SceneBase.qml</file>
-        <file>qml/styles/qmldir</file>
-        <file>qml/styles/Style.qml</file>
-        <file>assets/icons/back-icon.svg</file>
         <file>qml/components/CustomButton.qml</file>
         <file>qml/components/ImageButton.qml</file>
         <file>qml/components/MenuBackground.qml</file>
         <file>qml/scenes/GameScene.qml</file>
         <file>qml/scenes/LevelsScene.qml</file>
         <file>qml/config.json</file>
+        <file>qml/components/controls/ControlArrow.qml</file>
+        <file>qml/components/controls/MoveControl.qml</file>
+        <file>qml/components/game/GameFieldBackground.qml</file>
+        <file>qml/components/game/LevelContent.qml</file>
+        <file>qml/components/game/LevelSuccessPopup.qml</file>
+        <file>qml/components/game/MapBackground.qml</file>
+        <file>qml/components/game/MapBounds.qml</file>
+        <file>qml/components/levels/LevelButton.qml</file>
+        <file>qml/components/levels/TutorialPopup.qml</file>
+        <file>qml/components/CustomLabel.qml</file>
+        <file>qml/components/CustomSoundEffect.qml</file>
+        <file>qml/constants/qmldir</file>
+        <file>qml/constants/Statics.qml</file>
+        <file>qml/constants/Style.qml</file>
+        <file>qml/entities/sprites/PlayerSprite.qml</file>
+        <file>qml/entities/sprites/PlayerSpriteSequence.qml</file>
+        <file>qml/entities/BaseObject.qml</file>
+        <file>qml/entities/Crate.qml</file>
+        <file>qml/entities/InvisibleBlocker.qml</file>
+        <file>qml/entities/MapBlocker.qml</file>
+        <file>qml/entities/Player.qml</file>
+        <file>qml/entities/Target.qml</file>
+        <file>qml/entities/Wall.qml</file>
+        <file>qml/entities/WorldWalls.qml</file>
+        <file>qml/logic/LevelsManager.qml</file>
+        <file>qml/logic/MapData.qml</file>
+        <file>qml/logic/MapManager.qml</file>
+        <file>qml/logic/WorldData.qml</file>
+        <file>assets/control/+hd/control-down.png</file>
+        <file>assets/control/+hd/control-left.png</file>
+        <file>assets/control/+hd/control-right.png</file>
+        <file>assets/control/+hd/control-top.png</file>
+        <file>assets/control/+hd2/control-down.png</file>
+        <file>assets/control/+hd2/control-left.png</file>
+        <file>assets/control/+hd2/control-right.png</file>
+        <file>assets/control/+hd2/control-top.png</file>
+        <file>assets/control/control-down.png</file>
+        <file>assets/control/control-left.png</file>
+        <file>assets/control/control-right.png</file>
+        <file>assets/control/control-top.png</file>
+        <file>assets/game/sprites/player/player-cheer.png</file>
+        <file>assets/game/sprites/player/player-pushDown.png</file>
+        <file>assets/game/sprites/player/player-pushLeft.png</file>
+        <file>assets/game/sprites/player/player-pushRight.png</file>
+        <file>assets/game/sprites/player/player-pushUp.png</file>
+        <file>assets/game/sprites/player/player-stand.png</file>
+        <file>assets/game/sprites/player/player-walkDown.png</file>
+        <file>assets/game/sprites/player/player-walkLeft.png</file>
+        <file>assets/game/sprites/player/player-walkRight.png</file>
+        <file>assets/game/sprites/player/player-walkUp.png</file>
+        <file>assets/game/blocker.png</file>
+        <file>assets/game/crate.png</file>
+        <file>assets/game/floor.png</file>
+        <file>assets/game/target.png</file>
+        <file>assets/game/wall-horizontal.png</file>
+        <file>assets/game/wall-vertical.png</file>
+        <file>assets/icons/+hd/back-icon.png</file>
+        <file>assets/icons/+hd/restart-icon.png</file>
+        <file>assets/icons/+hd2/back-icon.png</file>
+        <file>assets/icons/+hd2/restart-icon.png</file>
+        <file>assets/icons/back-icon.png</file>
+        <file>assets/icons/restart-icon.png</file>
+        <file>assets/sounds/cheer.wav</file>
+        <file>assets/sounds/menu-background.mp3</file>
+        <file>assets/sounds/push.wav</file>
+        <file>assets/sounds/walk.wav</file>
+        <file>levels/1.lvl</file>
+        <file>levels/2.lvl</file>
+        <file>levels/3.lvl</file>
     </qresource>
 </RCC>
