@@ -31,7 +31,7 @@ Item {
         entityId: "leftWorldWall"
         isHorizontal: false
 
-        x: -wallThick; y: -wallThick
+        x: -wallThick; y: 0
         width: wallThick; height: worldSize.height + wallThick
     }
 
@@ -55,7 +55,7 @@ Item {
         entityId: "bottomWorldWall"
         isHorizontal: true
 
-        x: -wallThick; y: worldSize.height
+        x: 0; y: worldSize.height
         width: worldSize.width + wallThick; height: wallThick
     }
 }
