@@ -17,11 +17,59 @@
 **
 ********************************************/
 
+import Felgo 3.0
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 import "../constants"
 
 Button {
-    padding: Style.sizes.padding
+    id: root
+    padding: Style.sizes.hugePadding
+    leftPadding: Style.sizes.hugePadding * 2
+    rightPadding: Style.sizes.hugePadding * 2
+
+    contentItem: HeaderLabel {
+        text: root.text
+        font.pixelSize: Style.fonts.buttonSize
+
+        color: Style.colors.buttonFont
+    }
+
+    background: Item {
+        // center
+        MultiResolutionImage {
+            anchors {
+                fill: parent
+                leftMargin: Style.compontents.buttonEdgeSize
+                rightMargin: Style.compontents.buttonEdgeSize
+            }
+
+            source: qrc("assets/components/button-background.png")
+        }
+
+        // left edge
+        MultiResolutionImage {
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                left: parent.left
+            }
+            width: Style.compontents.buttonEdgeSize
+
+            source: qrc("assets/components/button-background-left.png")
+        }
+
+        // right edge
+        MultiResolutionImage {
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                right: parent.right
+            }
+            width: Style.compontents.buttonEdgeSize
+
+            source: qrc("assets/components/button-background-right.png")
+        }
+    }
 }

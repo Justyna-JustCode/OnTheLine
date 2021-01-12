@@ -38,6 +38,7 @@ QtObject {
     readonly property QtObject sizes: QtObject {
         readonly property real padding: 5
         readonly property real bigPadding: 10
+        readonly property real hugePadding: 20
 
         readonly property real margin: 15
         readonly property real bigMargin: 30
@@ -54,6 +55,7 @@ QtObject {
     }
 
     readonly property QtObject compontents: QtObject {
+        readonly property real buttonEdgeSize: 22
         readonly property size controlSize: Qt.size(100, 100)
         readonly property real controlOpacity: 0.7
     }
