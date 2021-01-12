@@ -39,11 +39,11 @@ Item {
         }
 
         Repeater {
-            model: [ Qt.LeftEdge, Qt.RightEdge, Qt.TopEdge, Qt.BottomEdge ]
+            model: [ Qt.LeftArrow, Qt.RightArrow, Qt.UpArrow, Qt.DownArrow ]
 
             ControlArrow {
                 axisController: root.axisController
-                edge: modelData
+                arrowType: modelData
             }
         }
     }

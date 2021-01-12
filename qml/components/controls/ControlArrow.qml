@@ -25,7 +25,7 @@ import "../../constants"
 MultiResolutionImage {
     property TwoAxisController axisController
 
-    property var edge
+    property int arrowType: Qt.NoArrow
     property real margin: Style.sizes.hugeBorder
 
     readonly property bool isPressed: mouseArea.containsPress
@@ -37,30 +37,30 @@ MultiResolutionImage {
         id: priv
         readonly property string basePath: "assets/control/control-%1.png"
 
-        function edgeName() {
-            switch (edge) {
-                case Qt.LeftEdge:
+        function arrowName() {
+            switch (arrowType) {
+                case Qt.LeftArrow:
                     return "left"
-                case Qt.RightEdge:
+                case Qt.RightArrow:
                     return "right"
-                case Qt.TopEdge:
-                    return "top"
-                case Qt.BottomEdge:
+                case Qt.UpArrow:
+                    return "up"
+                case Qt.DownArrow:
                     return "down"
             }
         }
 
         function isHorizontal() {
-            return edge === Qt.LeftEdge || edge === Qt.RightEdge
+            return arrowType === Qt.LeftArrow || arrowType === Qt.RightArrow
         }
 
-        function edgeOrientation() {
-            switch (edge) {
-                case Qt.LeftEdge:
-                case Qt.BottomEdge:
+        function arrowOrientation() {
+            switch (arrowType) {
+                case Qt.LeftArrow:
+                case Qt.DownArrow:
                     return -1
-                case Qt.TopEdge:
-                case Qt.RightEdge:
+                case Qt.UpArrow:
+                case Qt.RightArrow:
                     return 1
             }
         }
@@ -71,28 +71,28 @@ MultiResolutionImage {
         horizontalCenter: priv.isHorizontal() ? undefined : parent.horizontalCenter
         verticalCenter: priv.isHorizontal() ? parent.verticalCenter : undefined
 
-        left: edge === Qt.LeftEdge ? parent.left : undefined
-        leftMargin: edge === Qt.LeftEdge ? margin : 0
+        left: arrowType === Qt.LeftArrow ? parent.left : undefined
+        leftMargin: arrowType === Qt.LeftArrow ? margin : 0
 
-        right: edge === Qt.RightEdge ? parent.right : undefined
-        rightMargin: edge === Qt.RightEdge ? margin : 0
+        right: arrowType === Qt.RightArrow ? parent.right : undefined
+        rightMargin: arrowType === Qt.RightArrow ? margin : 0
 
-        top: edge === Qt.TopEdge ? parent.top : undefined
-        topMargin: edge === Qt.TopEdge ? margin : 0
+        top: arrowType === Qt.UpArrow ? parent.top : undefined
+        topMargin: arrowType === Qt.UpArrow ? margin : 0
 
-        bottom: edge === Qt.BottomEdge ? parent.bottom : undefined
-        bottomMargin: edge === Qt.BottomEdge ? margin : 0
+        bottom: arrowType === Qt.DownArrow ? parent.bottom : undefined
+        bottomMargin: arrowType === Qt.DownArrow ? margin : 0
     }
 
     fillMode: Image.PreserveAspectFit
-    source: qrc(priv.basePath.arg(priv.edgeName()))
+    source: qrc(priv.basePath.arg(priv.arrowName()))
 
     MouseArea {
         id: mouseArea
         anchors.fill: parent
 
         onContainsPressChanged: {
-            var movementValue = containsPress ? priv.edgeOrientation() : 0
+            var movementValue = containsPress ? priv.arrowOrientation() : 0
             if (priv.isHorizontal()) {
                 axisController.xAxis = movementValue
             } else {
