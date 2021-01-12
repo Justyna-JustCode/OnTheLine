@@ -33,22 +33,17 @@ PopupBase {
     popupHeight: Style.popup.defaultSize.height * 0.7
 
     headerText: qsTr("Success")
+    buttonText: qsTr("Show levels")
 
+    onButtonClicked: showLevelsRequest()
+
+    // A content here is placed inside of a layout
+    // see PopupBase
     CustomLabel {
         Layout.fillWidth: true
         Layout.fillHeight: true
 
         horizontalAlignment: Qt.AlignHCenter
         text: qsTr("Congratulations!\nYou've managed to finish the level.")
-    }
-    CustomButton {
-        Layout.alignment: Qt.AlignHCenter
-
-        text: qsTr("Show levels")
-
-        onClicked: {
-            root.close()
-            root.showLevelsRequest()
-        }
     }
 }

@@ -27,12 +27,15 @@ import "../components"
 
 Item {
     id: root
-    property string headerText
+    property alias headerText: headerLabel.text
+    property alias buttonText: confirmationButton.text
 
     property alias popupWidth: popupWindow.width
     property alias popupHeight: popupWindow.height
 
     default property alias contentItems: contentLayout.data
+
+    signal buttonClicked()
 
     function open() {
         visible = true
@@ -67,6 +70,7 @@ Item {
             spacing: Style.sizes.margin
 
             HeaderLabel {
+                id: headerLabel
                 Layout.fillWidth: true
 
                 text: root.headerText
@@ -78,6 +82,18 @@ Item {
                 id: contentLayout
 
                 spacing: Style.sizes.margin
+            }
+
+            CustomButton {
+                id: confirmationButton
+                Layout.alignment: Qt.AlignHCenter
+
+                text: qsTr("Close")
+
+                onClicked: {
+                    root.close()
+                    root.buttonClicked()
+                }
             }
         }
     }

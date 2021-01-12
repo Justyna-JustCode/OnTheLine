@@ -28,6 +28,7 @@ PopupBase {
     id: root
 
     headerText: qsTr("How to play")
+    buttonText: qsTr("Ok")
 
     // A content here is placed inside of a layout
     // see PopupBase
@@ -55,15 +56,5 @@ PopupBase {
                    " If you find yourself in a helpless position, you can always restart a level" +
                    " with a button in the top right corener of the screen.<br><br>" +
                    "Have fun!");
-    }
-
-    CustomButton {
-        Layout.alignment: Qt.AlignHCenter
-
-        text: qsTr("Ok")
-
-        onClicked: {
-            root.close()
-        }
     }
 }
