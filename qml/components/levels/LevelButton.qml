@@ -17,21 +17,37 @@
 **
 ********************************************/
 
+import Felgo 3.0
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 import "../../constants"
 import "../../components"
 
-// TODO support for levelIndex > 10
-ImageButton {
+CustomButton {
     property int levelIndex
     readonly property int levelNumber: index + 1
 
     padding: 0.35 * width
+    leftPadding: 0.35 * width
+    rightPadding: 0.35 * width
 
-    font.family: Style.fonts.defaultFont.name
+    implicitWidth: Style.sizes.defaultButtonSize / 2
+    implicitHeight: Style.sizes.defaultButtonSize / 2
+
+    font.family: Style.fonts.numbersFont.name
     font.pixelSize: 26
 
-    source: qrc("assets/numbers/text_" + levelNumber + ".png")
+    text: levelNumber
+
+    background: Item {
+        MultiResolutionImage {
+            anchors {
+                fill: parent
+            }
+
+            fillMode: Image.PreserveAspectFit
+            source: qrc("assets/components/level-button-background.png")
+        }
+    }
 }

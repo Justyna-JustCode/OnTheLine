@@ -90,5 +90,8 @@ QtObject {
         readonly property var headerFont: FontLoader {
             source: qrc("assets/fonts/basica-industrial-free-promo.ttf")
         }
+        readonly property var numbersFont: FontLoader {
+            source: qrc("assets/fonts/28-Days-Later.ttf")
+        }
     }
 }
