@@ -57,7 +57,7 @@ QtObject {
     }
 
     readonly property QtObject compontents: QtObject {
-        readonly property real buttonEdgeSize: 22
+        readonly property real buttonEdgeSize: 4
         readonly property size controlSize: Qt.size(100, 100)
         readonly property real controlOpacity: 0.7
     }
@@ -78,12 +78,11 @@ QtObject {
 
     // fonts
     readonly property QtObject fonts: QtObject {
-        readonly property int smallSize: 12
-        readonly property int defaultSize: 16
-        readonly property int bigSize: 26
-        readonly property int buttonSize: 26
-        readonly property int headerSize: 48
-        readonly property int menuHeaderSize: 54
+        readonly property int smallSize: 6
+        readonly property int defaultSize: 10
+        readonly property int bigSize: 16
+        readonly property int headerSize: 26
+        readonly property int menuHeaderSize: 48
 
         readonly property var defaultFont: FontLoader {
             source: qrc("assets/fonts/rough-typewriter.otf")

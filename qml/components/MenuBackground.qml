@@ -27,11 +27,7 @@ Rectangle {
                         // and thus the output color
 
     MultiResolutionImage {
-        anchors {
-            fill: parent
-            leftMargin: Style.compontents.buttonEdgeSize
-            rightMargin: Style.compontents.buttonEdgeSize
-        }
+        anchors.fill: parent
 
         source: qrc("assets/components/menu-background.png")
     }

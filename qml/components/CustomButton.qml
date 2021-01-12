@@ -25,13 +25,21 @@ import "../constants"
 
 Button {
     id: root
-    padding: Style.sizes.hugePadding
-    leftPadding: Style.sizes.hugePadding * 2
-    rightPadding: Style.sizes.hugePadding * 2
 
-    contentItem: HeaderLabel {
+    padding: Style.sizes.bigPadding
+    leftPadding: Style.sizes.bigPadding * 2
+    rightPadding: Style.sizes.bigPadding * 2
+
+    font {
+        family: Style.fonts.headerFont.name
+        pixelSize: Style.fonts.defaultSize
+    }
+
+    contentItem: CustomLabel {
         text: root.text
-        font.pixelSize: Style.fonts.defaultSize
+        font: root.font
+
+        horizontalAlignment: Qt.AlignHCenter
 
         color: Style.colors.buttonFont
     }

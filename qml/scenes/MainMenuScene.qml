@@ -41,29 +41,25 @@ MenuSceneBase {
 
       CustomButton {
           text: qsTr("Start game")
-          font.pixelSize: Style.fonts.smallSize
-          padding: Style.sizes.bigPadding
+          font.pixelSize: Style.fonts.bigSize
 
           onClicked: root.startGameRequest()
       }
       CustomButton {
           text: qsTr("Attribution")
-          font.pixelSize: Style.fonts.smallSize
-          padding: Style.sizes.bigPadding
+          font.pixelSize: Style.fonts.bigSize
 
           onClicked: root.showAboutRequest()
       }
       CustomButton {
           text: qsTr("About")
-          font.pixelSize: Style.fonts.smallSize
-          padding: Style.sizes.bigPadding
+          font.pixelSize: Style.fonts.bigSize
 
           onClicked: root.showAboutRequest()
       }
       CustomButton {
           text: qsTr("Quit")
-          font.pixelSize: Style.fonts.smallSize
-          padding: Style.sizes.bigPadding
+          font.pixelSize: Style.fonts.bigSize
 
           onClicked: root.backRequest()
       }
