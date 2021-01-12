@@ -23,7 +23,7 @@ import Felgo 3.0
 import QtQuick 2.12
 
 QtObject {
-    readonly property var sizes: QtObject {
+    readonly property QtObject sizes: QtObject {
         readonly property real playerSizeModifier: 0.7  // defines player size in relation to a field size
         readonly property real crateSizeModifier: 0.8   // defines crate size in relation to a field size
 
@@ -33,7 +33,7 @@ QtObject {
         readonly property real outsideWallThick: 10  // defines a size of wall around the game play
     }
 
-    readonly property var behavior: QtObject {
+    readonly property QtObject behavior: QtObject {
         readonly property real restitutionNoBounding: 0  // a value of resitution that make object not bouncy
 
         readonly property real crateLinearDumpling: 30  // defines how fast crate will slow and stop after a contact
@@ -44,7 +44,7 @@ QtObject {
         readonly property int defaultFrameRate: 16;
     }
 
-    readonly property var entityTypes: QtObject {
+    readonly property QtObject entityTypes: QtObject {
         readonly property string invisibleObject: "player"
         readonly property string wall: "wall"
         readonly property string mapBlocker: "mapBlocker"
@@ -53,7 +53,7 @@ QtObject {
         readonly property string target: "target"
     }
 
-    readonly property var entityCategories: QtObject {
+    readonly property QtObject entityCategories: QtObject {
         readonly property int player: Box.Category1
         readonly property int crate: Box.Category2
     }

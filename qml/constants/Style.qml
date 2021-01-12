@@ -21,7 +21,21 @@ pragma Singleton
 import QtQuick 2.12
 
 QtObject {
-    readonly property var sizes: QtObject {
+    // tools
+    // (we need to define it here to be able to use it for fonts)
+    property url appPath: Qt.resolvedUrl("../../")
+    property bool isLiveMode: (typeof felgoLiveEngine !== "undefined")
+
+    function qrc(relativePath) {
+        if (!isLiveMode && DELIVERY_BUILD) {
+            return "qrc:" + relativePath;
+        }
+
+        return appPath + relativePath;
+    }
+
+    // values
+    readonly property QtObject sizes: QtObject {
         readonly property real padding: 5
         readonly property real bigPadding: 10
 
@@ -33,13 +47,13 @@ QtObject {
         readonly property real defaultButtonSize: 40
     }
 
-    readonly property var behavior: QtObject {
+    readonly property QtObject behavior: QtObject {
         readonly property int menuFadeTime: 300
         readonly property real backgroundMusicVolume: 0.2
         readonly property real soundEffectVolume: 0.3
     }
 
-    readonly property var compontents: QtObject {
+    readonly property QtObject compontents: QtObject {
         readonly property size controlSize: Qt.size(100, 100)
         readonly property real controlOpacity: 0.7
     }

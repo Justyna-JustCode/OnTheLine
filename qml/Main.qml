@@ -131,17 +131,8 @@ GameWindow {
         id: mapManager
     }
 
-
     // global tools
-    readonly property url appPath: Qt.resolvedUrl("../")
-    function isLiveMode() {
-        return typeof felgoLiveEngine !== "undefined";
-    }
     function qrc(relativePath) {
-        if (!isLiveMode() && DELIVERY_BUILD) {
-            return "qrc:" + relativePath;
-        }
-
-        return appPath + relativePath;
+        return Style.qrc(relativePath)
     }
 }
