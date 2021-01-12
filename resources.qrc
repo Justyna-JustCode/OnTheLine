@@ -14,11 +14,9 @@
         <file>qml/components/controls/MoveControl.qml</file>
         <file>qml/components/game/GameFieldBackground.qml</file>
         <file>qml/components/game/LevelContent.qml</file>
-        <file>qml/components/game/LevelSuccessPopup.qml</file>
         <file>qml/components/game/MapBackground.qml</file>
         <file>qml/components/game/MapBounds.qml</file>
         <file>qml/components/levels/LevelButton.qml</file>
-        <file>qml/components/levels/TutorialPopup.qml</file>
         <file>qml/components/CustomLabel.qml</file>
         <file>qml/components/CustomSoundEffect.qml</file>
         <file>qml/constants/qmldir</file>
@@ -41,15 +39,12 @@
         <file>assets/control/+hd/control-down.png</file>
         <file>assets/control/+hd/control-left.png</file>
         <file>assets/control/+hd/control-right.png</file>
-        <file>assets/control/+hd/control-top.png</file>
         <file>assets/control/+hd2/control-down.png</file>
         <file>assets/control/+hd2/control-left.png</file>
         <file>assets/control/+hd2/control-right.png</file>
-        <file>assets/control/+hd2/control-top.png</file>
         <file>assets/control/control-down.png</file>
         <file>assets/control/control-left.png</file>
         <file>assets/control/control-right.png</file>
-        <file>assets/control/control-top.png</file>
         <file>assets/game/sprites/player/player-cheer.png</file>
         <file>assets/game/sprites/player/player-pushDown.png</file>
         <file>assets/game/sprites/player/player-pushLeft.png</file>
@@ -79,6 +74,38 @@
         <file>levels/1.lvl</file>
         <file>levels/2.lvl</file>
         <file>levels/3.lvl</file>
-        <file>qml/scenes/AboutScene.qml</file>
+        <file>qml/components/HeaderLabel.qml</file>
+        <file>qml/components/TeaserImage.qml</file>
+        <file>qml/popups/AboutPopup.qml</file>
+        <file>qml/popups/AttributionPopup.qml</file>
+        <file>qml/popups/LevelSuccessPopup.qml</file>
+        <file>qml/popups/PopupBackground.qml</file>
+        <file>qml/popups/PopupBase.qml</file>
+        <file>qml/popups/TutorialPopup.qml</file>
+        <file>qml/scenes/MenuSceneBase.qml</file>
+        <file>assets/components/button-background-left.png</file>
+        <file>assets/components/button-background-right.png</file>
+        <file>assets/components/button-background.png</file>
+        <file>assets/components/image-button-background.png</file>
+        <file>assets/components/level-button-background.png</file>
+        <file>assets/components/menu-background.png</file>
+        <file>assets/control/+hd/control-up.png</file>
+        <file>assets/control/+hd2/control-up.png</file>
+        <file>assets/control/control-up.png</file>
+        <file>assets/fonts/28-Days-Later.ttf</file>
+        <file>assets/fonts/basica-industrial-free-promo.ttf</file>
+        <file>assets/fonts/rough-typewriter.otf</file>
+        <file>assets/game/sprites/player/player-push.png</file>
+        <file>assets/popups/background.png</file>
+        <file>assets/popups/base-edge.png</file>
+        <file>assets/popups/bottom-left-corner.png</file>
+        <file>assets/popups/bottom-right-corner.png</file>
+        <file>assets/popups/top-edge.png</file>
+        <file>assets/popups/top-left-corner.png</file>
+        <file>assets/popups/top-right-corner.png</file>
+        <file>assets/tutorial/blocker.png</file>
+        <file>assets/tutorial/crate.png</file>
+        <file>assets/tutorial/player.png</file>
+        <file>assets/tutorial/target.png</file>
     </qresource>
 </RCC>
