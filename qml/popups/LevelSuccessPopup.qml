@@ -29,7 +29,8 @@ PopupBase {
 
     signal showLevelsRequest()
 
-    height: 300
+    popupWidth: Style.popup.defaultSize.width * 0.7
+    popupHeight: Style.popup.defaultSize.height * 0.7
 
     headerText: qsTr("Success")
 

@@ -23,6 +23,7 @@ import QtQuick 2.12
 import "constants"
 import "scenes"
 import "logic"
+import "popups"
 
 GameWindow {
     id: root
@@ -107,6 +108,24 @@ GameWindow {
         onBackRequest: root.showLevels()
     }
 
+    // popups
+    // TODO: better solution for popups
+    Scene {
+        TutorialPopup {
+            id: tutorialPopup
+        }
+
+        LevelSuccessPopup {
+            id: successPopup
+
+            onShowLevelsRequest: {
+                gameScene.closeLevel()
+                root.showLevels()
+            }
+        }
+    }
+
+    // music
     BackgroundMusic {
         id: backgroundMusic
         property bool active: true

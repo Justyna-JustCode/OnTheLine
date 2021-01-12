@@ -24,7 +24,6 @@ import Felgo 3.0
 import "../constants"
 import "../components"
 import "../components/levels"
-import "../popups"
 
 MenuSceneBase {
   id: root
@@ -32,10 +31,6 @@ MenuSceneBase {
   signal levelSelected(int number)
 
   headerText: qsTr("Levels")
-
-  TutorialPopup {
-      id: tutorialPopup
-  }
 
   ColumnLayout {
       anchors {

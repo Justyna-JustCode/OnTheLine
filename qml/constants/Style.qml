@@ -63,6 +63,8 @@ QtObject {
     }
 
     readonly property QtObject popup: QtObject {
+        readonly property size defaultSize: Qt.size(400, 280)
+
         readonly property real cornerSize: 20
         readonly property real baseEdgeSize: 10
         readonly property real topEdgeSize: 14

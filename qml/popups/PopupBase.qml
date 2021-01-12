@@ -25,42 +25,60 @@ import QtQuick.Controls 2.12
 import "../constants"
 import "../components"
 
-Popup {
+Item {
     id: root
     property string headerText
+
+    property alias popupWidth: popupWindow.width
+    property alias popupHeight: popupWindow.height
+
     default property alias contentItems: contentLayout.data
 
-    anchors.centerIn: parent
-    margins: Style.sizes.bigMargin    // just in case if a popup goes big
-
-    implicitWidth: 600
-    implicitHeight: 400
-
-    padding: Style.sizes.bigMargin
-
-    background: PopupBackground {}
-
-    contentItem: ColumnLayout {
-        spacing: Style.sizes.margin
-
-        HeaderLabel {
-            Layout.fillWidth: true
-
-            text: root.headerText
-        }
-
-        // we need to use internal layout here
-        // to be able to place a spacer on the bottom
-        ColumnLayout {
-            id: contentLayout
-
-            spacing: Style.sizes.margin
-        }
-
-        Spacer {
-            Layout.fillHeight: true
-        }
+    function open() {
+        visible = true
+    }
+    function close() {
+        visible = false
     }
 
-    closePolicy: Popup.CloseOnPressOutside
+    anchors.fill: parent
+    visible: false
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: close()
+    }
+
+    Control {
+        id: popupWindow
+        anchors {
+            centerIn: parent
+            margins: Style.sizes.margin    // just in case if a popup goes big
+        }
+
+        implicitWidth: Style.popup.defaultSize.width
+        implicitHeight: Style.popup.defaultSize.height
+
+        padding: Style.sizes.hugePadding
+
+        background: PopupBackground {}
+
+        contentItem: ColumnLayout {
+            spacing: Style.sizes.margin
+
+            HeaderLabel {
+                Layout.fillWidth: true
+
+                text: root.headerText
+            }
+
+            // we need to use internal layout here
+            // to be able to place a spacer on the bottom
+            ColumnLayout {
+                id: contentLayout
+
+                spacing: Style.sizes.margin
+            }
+        }
+    }
 }

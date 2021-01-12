@@ -29,7 +29,8 @@ Item {
     Rectangle {
         anchors {
             fill: parent
-            margins: Style.popup.cornerSize / 2
+            margins: (Style.popup.cornerSize / 2) * 0.9 // enlarge a background a little bit
+                                                        // to avoid empty pixels on connections
         }
 
         color: "white"
