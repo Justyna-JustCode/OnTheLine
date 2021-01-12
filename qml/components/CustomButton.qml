@@ -31,7 +31,7 @@ Button {
 
     contentItem: HeaderLabel {
         text: root.text
-        font.pixelSize: Style.fonts.buttonSize
+        font.pixelSize: Style.fonts.defaultSize
 
         color: Style.colors.buttonFont
     }

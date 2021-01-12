@@ -1,7 +1,3 @@
-import QtQuick 2.12
-import QtQuick.Layouts 1.12
-import Felgo 3.0
-
 /********************************************
 ** On the line!
 ** Copyright 2021 Justyna JustCode
@@ -21,44 +17,66 @@ import Felgo 3.0
 **
 ********************************************/
 
+import QtQuick 2.12
+import QtQuick.Layouts 1.12
+
 import "../constants"
 import "../components"
 
-SceneBase {
+MenuSceneBase {
   id: root
 
   signal startGameRequest
   signal showAboutRequest
 
-  MenuBackground {}
+  headerText: qsTr("On the line")
 
   ColumnLayout {
       anchors {
-          top: parent.top
-          bottom: parent.bottom
-          horizontalCenter: parent.horizontalCenter
-
-          margins: Style.sizes.bigMargin
+          fill: parent
+          topMargin: Style.sizes.bigMargin
+          leftMargin: Style.sizes.bigMargin
       }
 
       CustomButton {
           text: qsTr("Start game")
+          font.pixelSize: Style.fonts.smallSize
+          padding: Style.sizes.bigPadding
 
           onClicked: root.startGameRequest()
       }
       CustomButton {
-          text: qsTr("About && Attribution")
+          text: qsTr("Attribution")
+          font.pixelSize: Style.fonts.smallSize
+          padding: Style.sizes.bigPadding
+
+          onClicked: root.showAboutRequest()
+      }
+      CustomButton {
+          text: qsTr("About")
+          font.pixelSize: Style.fonts.smallSize
+          padding: Style.sizes.bigPadding
 
           onClicked: root.showAboutRequest()
       }
       CustomButton {
           text: qsTr("Quit")
+          font.pixelSize: Style.fonts.smallSize
+          padding: Style.sizes.bigPadding
 
           onClicked: root.backRequest()
       }
 
       Spacer {
           Layout.fillHeight: true
+      }
+  }
+
+  TeaserImage {
+      anchors {
+          right: parent.right
+          rightMargin: Style.sizes.margin
+          bottom: parent.bottom
       }
   }
 }

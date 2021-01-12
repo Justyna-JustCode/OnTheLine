@@ -74,9 +74,11 @@ QtObject {
 
     // fonts
     readonly property QtObject fonts: QtObject {
+        readonly property int smallSize: 12
         readonly property int defaultSize: 16
         readonly property int buttonSize: 26
         readonly property int headerSize: 48
+        readonly property int menuHeaderSize: 54
 
         readonly property var defaultFont: FontLoader {
             source: qrc("assets/fonts/rough-typewriter.otf")
