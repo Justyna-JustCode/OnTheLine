@@ -24,6 +24,7 @@ import Felgo 3.0
 import "../constants"
 import "../components"
 import "../components/levels"
+import "../popups"
 
 SceneBase {
   id: root

@@ -21,31 +21,30 @@ import QtQuick 2.12
 import QtQuick.Layouts 1.12
 import QtQuick.Controls 2.12
 
-import "../../constants"
-import "../../components"
+import "../constants"
+import "../components"
 
-// TODO: real nice look
-Popup {
+PopupBase {
     id: root
 
-    signal showLevelsRequest()
+    headerText: qsTr("How to play")
 
-    anchors.centerIn: parent
-    margins: Style.sizes.bigMargin    // just in case if a popup goes big
+    // A content here is placed inside of a layout
+    // see PopupBase
+    CustomLabel {
+        Layout.fillWidth: true
+        Layout.fillHeight: true
 
-    contentItem: ColumnLayout {
-        CustomLabel {
-            text: qsTr("Level accomplished!")
-        }
-        CustomButton {
-            text: qsTr("Show levels")
+        horizontalAlignment: Qt.AlignHCenter
+        text: qsTr("Learn yourself ;)")
+    }
+    CustomButton {
+        Layout.alignment: Qt.AlignHCenter
 
-            onClicked: {
-                root.close()
-                root.showLevelsRequest()
-            }
+        text: qsTr("Ok")
+
+        onClicked: {
+            root.close()
         }
     }
-
-    closePolicy: Popup.CloseOnPressOutside
 }

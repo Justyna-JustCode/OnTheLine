@@ -26,6 +26,7 @@ import "../constants"
 import "../components"
 import "../components/game"
 import "../components/controls"
+import "../popups"
 import "../logic"
 
 SceneBase {
