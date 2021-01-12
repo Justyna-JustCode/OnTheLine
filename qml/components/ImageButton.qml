@@ -23,7 +23,7 @@ import QtQuick.Controls 2.12
 
 import "../constants"
 
-RoundButton {
+Button {
     property alias source: image.source
     property url source
 
@@ -31,7 +31,12 @@ RoundButton {
 
     implicitWidth: Style.sizes.defaultButtonSize
     implicitHeight: Style.sizes.defaultButtonSize
-    radius: width / 2
+
+    background: MultiResolutionImage {
+        anchors.fill: parent
+
+        source: qrc("assets/components/image-button-background.png")
+    }
 
     contentItem: Item {
         MultiResolutionImage {
@@ -40,6 +45,8 @@ RoundButton {
 
             width: contentItem.width
             height: contentItem.height
+
+            fillMode: Image.PreserveAspectFit
         }
     }
 }
