@@ -27,6 +27,7 @@ MenuSceneBase {
   id: root
 
   signal startGameRequest
+  signal showAttributionRequest
   signal showAboutRequest
 
   headerText: qsTr("On the line")
@@ -49,7 +50,7 @@ MenuSceneBase {
           text: qsTr("Attribution")
           font.pixelSize: Style.fonts.bigSize
 
-          onClicked: root.showAboutRequest()
+          onClicked: root.showAttributionRequest()
       }
       CustomButton {
           text: qsTr("About")

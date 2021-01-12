@@ -37,13 +37,6 @@ GameWindow {
             }
         },
         State {
-            name: "about"
-            PropertyChanges {
-                target: aboutScene
-                active: true
-            }
-        },
-        State {
             name: "levels"
             PropertyChanges {
                 target: levelsScene
@@ -68,8 +61,11 @@ GameWindow {
     function showMenu() {
         state = "menu"
     }
+    function showAttribution() {
+        attributionPopup.open()
+    }
     function showAbout() {
-        state = "about"
+        aboutPopup.open()
     }
     function showLevels() {
         state = "levels"
@@ -89,6 +85,7 @@ GameWindow {
         id: mainMenuScene
 
         onStartGameRequest: root.showLevels()
+        onShowAttributionRequest: root.showAttribution()
         onShowAboutRequest: root.showAbout()
         onBackRequest: root.quit()
     }
@@ -122,6 +119,13 @@ GameWindow {
                 gameScene.closeLevel()
                 root.showLevels()
             }
+        }
+
+        AttributionPopup {
+            id: attributionPopup
+        }
+        AboutPopup {
+            id: aboutPopup
         }
     }
 
