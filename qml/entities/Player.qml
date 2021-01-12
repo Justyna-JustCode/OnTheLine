@@ -53,7 +53,7 @@ BaseObject {
 
         property bool cheering: false
         property bool pushing: false
-        readonly property bool moving: collider.moving
+        readonly property bool walking: moveController.moving
 
         property int walkAction: {
             if (moveController.xAxis > 0) {
@@ -89,7 +89,7 @@ BaseObject {
         }
 
         onPushingChanged: priv.updateState()
-        onMovingChanged: priv.updateState()
+        onWalkingChanged: priv.updateState()
 
 
         // if pushing -> "pushing"
@@ -106,7 +106,7 @@ BaseObject {
                 return
             }
 
-            if (priv.moving) {
+            if (priv.walking) {
                 state = "walking"
                 return
             }
@@ -167,6 +167,7 @@ BaseObject {
 
     TwoAxisController {
         id: moveController
+        readonly property bool moving: (xAxis!== 0) || (yAxis!== 0)
     }
 
     PlayerSpriteSequence {
