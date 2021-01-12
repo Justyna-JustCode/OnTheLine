@@ -89,10 +89,6 @@ GameWindow {
         onShowAboutRequest: root.showAbout()
         onBackRequest: root.quit()
     }
-    AboutScene {
-        id: aboutScene
-    }
-
     LevelsScene {
         id: levelsScene
 
