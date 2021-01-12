@@ -33,7 +33,7 @@ BaseObject {
     property bool active
     onActiveChanged: {
         if (active == false) {
-            priv.pushing = false;    // we need to update pushign manually
+            priv.touching = false;    // we need to update pushign manually
                                      // for a restart because end of contact is not called
         } else {
             priv.cheering = false;  // we need stop cheering for next level
