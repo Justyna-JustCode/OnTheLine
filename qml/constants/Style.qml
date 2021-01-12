@@ -60,6 +60,13 @@ QtObject {
         readonly property real controlOpacity: 0.7
     }
 
+    readonly property QtObject popup: QtObject {
+        readonly property real cornerSize: 20
+        readonly property real baseEdgeSize: 10
+        readonly property real topEdgeSize: 14
+        readonly property real backgroundOpacity: 0.7
+    }
+
     // colors
     readonly property QtObject colors: QtObject {
         readonly property color buttonFont: "white"
