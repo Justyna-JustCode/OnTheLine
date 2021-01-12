@@ -40,7 +40,8 @@ MenuSceneBase {
 
       // TODO: add scroll area when needed
       GridLayout {
-          columns: 4
+          id: availableRepeater
+          columns: 6
 
           columnSpacing: Style.sizes.margin
           rowSpacing: Style.sizes.margin
@@ -60,6 +61,21 @@ MenuSceneBase {
                           tutorialPopup.open()
                       }
                   }
+              }
+          }
+
+          // TODO: add more levels - temporary UI improvement
+          Repeater {
+              id: unavailableRepeater
+              model: 9
+
+              delegate: LevelButton {
+                  levelIndex: 3// + unavailableRepeater.index
+
+                  Layout.fillWidth: true
+                  Layout.preferredHeight: width
+
+                  opacity: 0.3
               }
           }
       }
