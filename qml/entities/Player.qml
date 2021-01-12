@@ -52,7 +52,8 @@ BaseObject {
         id: priv
 
         property bool cheering: false
-        property bool pushing: false
+        property bool touching: false
+        readonly property bool pushing: touching && walking
         readonly property bool walking: moveController.moving
 
         property int walkAction: {
@@ -119,7 +120,6 @@ BaseObject {
         State {
             name: "idle"
 
-            PropertyChanges { target: priv; pushing: false }
             PropertyChanges { target: sprites; currentAction: actions.stand }
         },
         State {
@@ -154,13 +154,13 @@ BaseObject {
         fixture.onBeginContact: {
             var otherBody = other.getBody()
             if (otherBody.target.entityType === Statics.entityTypes.crate) {
-                priv.pushing = true
+                priv.touching = true
             }
         }
         fixture.onEndContact: {
             var otherBody = other.getBody()
             if (otherBody.target.entityType === Statics.entityTypes.crate) {
-                priv.pushing = false
+                priv.touching = false
             }
         }
     }
