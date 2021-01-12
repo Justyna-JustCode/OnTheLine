@@ -32,12 +32,31 @@ PopupBase {
     // A content here is placed inside of a layout
     // see PopupBase
     CustomLabel {
+        readonly property int imgSize: Style.fonts.defaultSize
+        readonly property string imgTemplate: "<img src=\"%1\" width=\"" + imgSize + "\" height=\"" + imgSize + "\" \>"
+        readonly property url crateSource: qrc("assets/tutorial/crate.png")
+        readonly property url targetSource: qrc("assets/tutorial/target.png")
+        readonly property url playerSource: qrc("assets/tutorial/player.png")
+        readonly property url blockerSource: qrc("assets/tutorial/blocker.png")
+
         Layout.fillWidth: true
         Layout.fillHeight: true
 
         horizontalAlignment: Qt.AlignHCenter
-        text: qsTr("Learn yourself ;)")
+        textFormat: Label.RichText
+
+        text: qsTr("Your task is to move a crate (" + imgTemplate.arg(crateSource) + ")<br>" +
+                   "to a destination point (" + imgTemplate.arg(targetSource) + ").<br>" +
+                   "To do this you should use a worker (" + imgTemplate.arg(playerSource) + ")<br>" +
+                   "to push a crate in a desired location.<br>" +
+                   "On the map there are also obstacles (" + imgTemplate.arg(blockerSource) + ")<br>" +
+                   "which cannot be moved.<br><br>" +
+                   "Pulling is not possible, so you have to be careful!" +
+                   " If you find yourself in a helpless position, you can always restart a level" +
+                   " with a button in the top right corener of the screen.<br><br>" +
+                   "Have fun!");
     }
+
     CustomButton {
         Layout.alignment: Qt.AlignHCenter
 
