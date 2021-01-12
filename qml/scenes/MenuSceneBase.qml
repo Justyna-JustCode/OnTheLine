@@ -26,8 +26,10 @@ import "../components"
 
 SceneBase {
   id: root
-  property string headerText
   default property alias contentItems: contentItem.data
+
+  property string headerText
+  property bool showBackButton: true
 
   MenuBackground {}
 
@@ -50,6 +52,17 @@ SceneBase {
 
           Layout.fillWidth: true
           Layout.fillHeight: true
+      }
+
+
+      ImageButton {
+          Layout.alignment: Qt.AlignHCenter
+
+          visible: root.showBackButton
+
+          source: qrc("assets/icons/back-icon.png")
+
+          onClicked: backRequest()
       }
   }
 }

@@ -30,6 +30,7 @@ MenuSceneBase {
   signal showAboutRequest
 
   headerText: qsTr("On the line")
+  showBackButton: false
 
   ColumnLayout {
       anchors {

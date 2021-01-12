@@ -21,16 +21,17 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 import "../../constants"
+import "../../components"
 
-Button {
-    padding: Style.sizes.padding
+// TODO support for levelIndex > 10
+ImageButton {
+    property int levelIndex
+    readonly property int levelNumber: index + 1
 
-    background: Rectangle {
-        border {
-            color: "white"
-            width: 2
-        }
-        radius: 2
-        color: "steelblue"
-    }
+    padding: 0.35 * width
+
+    font.family: Style.fonts.defaultFont.name
+    font.pixelSize: 26
+
+    source: qrc("assets/numbers/text_" + levelNumber + ".png")
 }

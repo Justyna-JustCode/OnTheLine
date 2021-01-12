@@ -26,12 +26,12 @@ import "../components"
 import "../components/levels"
 import "../popups"
 
-SceneBase {
+MenuSceneBase {
   id: root
 
   signal levelSelected(int number)
 
-  MenuBackground {}
+  headerText: qsTr("Levels")
 
   TutorialPopup {
       id: tutorialPopup
@@ -54,13 +54,10 @@ SceneBase {
               model: levelsManager.count
 
               delegate: LevelButton {
-                  readonly property int levelIndex: index
-                  readonly property int levelNumber: index + 1
+                  levelIndex: index
 
                   Layout.fillWidth: true
                   Layout.preferredHeight: width
-
-                  text: levelNumber
 
                   onClicked: {
                       root.levelSelected(levelIndex)
@@ -70,14 +67,6 @@ SceneBase {
                   }
               }
           }
-
-      }
-
-      ImageButton {
-          Layout.alignment: Qt.AlignHCenter
-          source: qrc("assets/icons/back-icon.png")
-
-          onClicked: backRequest()
       }
   }
 
