@@ -49,13 +49,12 @@ SceneBase {
       levelFinished = false
   }
 
-  MenuBackground {}
+  GameFieldBackground {}
 
   ColumnLayout {
       anchors.fill: parent
       spacing: 0
 
-      // TODO: real nice look
       RowLayout {
           Layout.margins: Style.sizes.tinyPadding
 
@@ -77,7 +76,8 @@ SceneBase {
           CustomLabel {
               text: qsTr("Level %1").arg(levelsManager.currentLevel + 1)
 
-              font.pixelSize: Style.fonts.bigSize
+              font.pixelSize: Style.fonts.headerSize
+              color: Style.colors.alternativeFontColor
           }
 
           Spacer {
@@ -96,15 +96,16 @@ SceneBase {
           }
       }
 
-      GameFieldBackground {    // game field
+      Item {
           Layout.fillWidth: true
           Layout.fillHeight: true
 
-          padding: Style.sizes.padding + Statics.sizes.outsideWallThick
-
           WorldData {
               id: worldData
-              anchors.fill: parent
+              anchors {
+                  fill: parent
+                  margins: Style.sizes.padding + Statics.sizes.outsideWallThick
+              }
 
               mapSize: mapManager.mapData.size
           }
