@@ -1,3 +1,7 @@
+import QtQuick 2.12
+import QtQuick.Layouts 1.12
+import Felgo 3.0
+
 /********************************************
 ** On the line!
 ** Copyright 2021 Justyna JustCode
@@ -17,22 +21,35 @@
 **
 ********************************************/
 
-import Felgo 3.0
-import QtQuick 2.0
+import "../constants"
+import "../components"
 
-Rectangle {
-    anchors.fill: parent
+SceneBase {
+  id: root
+  property string headerText
+  default property alias contentItems: contentItem.data
 
-    color: "dimgray"    // this is to control an image opacity
-                        // and thus the output color
+  MenuBackground {}
 
-    MultiResolutionImage {
-        anchors {
-            fill: parent
-            leftMargin: Style.compontents.buttonEdgeSize
-            rightMargin: Style.compontents.buttonEdgeSize
-        }
+  ColumnLayout {
+      anchors {
+          fill: parent
 
-        source: qrc("assets/components/menu-background.png")
-    }
+          margins: Style.sizes.margin
+      }
+
+      HeaderLabel {
+          Layout.fillWidth: true
+
+          font.pixelSize: Style.fonts.menuHeaderSize
+          text: root.headerText
+      }
+
+      Item {
+          id: contentItem
+
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+      }
+  }
 }
