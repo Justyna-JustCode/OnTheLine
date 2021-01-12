@@ -22,11 +22,9 @@ import QtQuick.Controls 2.12
 
 import "../constants"
 
-// to common settings (fonts, etc.) for all texts in the application
-Label {
-    font.family: Style.fonts.defaultFont.name
-    font.pixelSize: Style.fonts.defaultSize
+CustomLabel {
+    font.family: Style.fonts.headerFont.name
+    font.pixelSize: Style.fonts.headerSize
 
-    wrapMode: Label.WordWrap
-    elide: Label.ElideRight
+    horizontalAlignment: Qt.AlignHCenter
 }

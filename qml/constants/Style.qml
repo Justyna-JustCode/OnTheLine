@@ -57,4 +57,23 @@ QtObject {
         readonly property size controlSize: Qt.size(100, 100)
         readonly property real controlOpacity: 0.7
     }
+
+    // colors
+    readonly property QtObject colors: QtObject {
+        readonly property color buttonFont: "white"
+    }
+
+    // fonts
+    readonly property QtObject fonts: QtObject {
+        readonly property int defaultSize: 16
+        readonly property int buttonSize: 26
+        readonly property int headerSize: 48
+
+        readonly property var defaultFont: FontLoader {
+            source: qrc("assets/fonts/rough-typewriter.otf")
+        }
+        readonly property var headerFont: FontLoader {
+            source: qrc("assets/fonts/basica-industrial-free-promo.ttf")
+        }
+    }
 }
