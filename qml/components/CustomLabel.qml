@@ -27,6 +27,8 @@ Label {
     font.family: Style.fonts.defaultFont.name
     font.pixelSize: Style.fonts.defaultSize
 
+    color: Style.colors.fontColor
+
     wrapMode: Label.WordWrap
     elide: Label.ElideRight
 }

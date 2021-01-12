@@ -41,7 +41,7 @@ Button {
 
         horizontalAlignment: Qt.AlignHCenter
 
-        color: Style.colors.buttonFont
+        color: Style.colors.alternativeFontColor
     }
 
     background: Item {

@@ -73,7 +73,8 @@ QtObject {
 
     // colors
     readonly property QtObject colors: QtObject {
-        readonly property color buttonFont: "white"
+        readonly property color fontColor: "black"
+        readonly property color alternativeFontColor: "white"
     }
 
     // fonts
