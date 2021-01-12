@@ -36,6 +36,7 @@ QtObject {
 
     // values
     readonly property QtObject sizes: QtObject {
+        readonly property real tinyPadding: 2
         readonly property real padding: 5
         readonly property real bigPadding: 10
         readonly property real hugePadding: 20
@@ -45,6 +46,7 @@ QtObject {
 
         readonly property real hugeBorder: 7
 
+        readonly property real mediumButtonSize: 35
         readonly property real defaultButtonSize: 40
     }
 
@@ -76,6 +78,7 @@ QtObject {
     readonly property QtObject fonts: QtObject {
         readonly property int smallSize: 12
         readonly property int defaultSize: 16
+        readonly property int bigSize: 26
         readonly property int buttonSize: 26
         readonly property int headerSize: 48
         readonly property int menuHeaderSize: 54

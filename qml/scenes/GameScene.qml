@@ -64,8 +64,14 @@ SceneBase {
 
       // TODO: real nice look
       RowLayout {
+          Layout.margins: Style.sizes.tinyPadding
+
           ImageButton {
               Layout.alignment: Qt.AlignHCenter
+
+              implicitWidth: Style.sizes.mediumButtonSize
+              implicitHeight: Style.sizes.mediumButtonSize
+
               source: qrc("assets/icons/back-icon.png")
 
               onClicked: root.closeLevel()
@@ -77,6 +83,8 @@ SceneBase {
 
           CustomLabel {
               text: qsTr("Level %1").arg(levelsManager.currentLevel + 1)
+
+              font.pixelSize: Style.fonts.bigSize
           }
 
           Spacer {
@@ -85,6 +93,10 @@ SceneBase {
 
           ImageButton {
               Layout.alignment: Qt.AlignHCenter
+
+              implicitWidth: Style.sizes.mediumButtonSize
+              implicitHeight: Style.sizes.mediumButtonSize
+
               source: qrc("assets/icons/restart-icon.png")
 
               onClicked: root.restartLevel()
