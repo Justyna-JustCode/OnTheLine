@@ -46,6 +46,8 @@ int main(int argc, char *argv[])
   felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
 #endif
 
+  engine.rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
+
   engine.load(QUrl(felgo.mainQmlFileName()));
   return app.exec();
 }

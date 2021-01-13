@@ -48,7 +48,7 @@ PopupBase {
             horizontalAlignment: Qt.AlignHCenter
             textFormat: Label.RichText
 
-            text: qsTr("Version: <i>(in progress)</i><br>" +
+            text: qsTr("Version: <i>" + APP_VERSION + "</i><br>" +
                        "<br><b>Author:</b><br>" +
                        "JustCode ("
                        + linkTemplate.arg("http://just-code.org/") + ")<br>" +

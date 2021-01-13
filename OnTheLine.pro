@@ -4,8 +4,12 @@ CONFIG += felgo
 # Project identifier and version
 # More information: https://felgo.com/doc/felgo-publishing/#project-configuration
 PRODUCT_IDENTIFIER = org.just-code.ontheline
-PRODUCT_VERSION_NAME = 1.0
+PRODUCT_VERSION_NAME = 0.9
 PRODUCT_VERSION_CODE = 1
+
+VERSION = $${PRODUCT_VERSION_NAME}.$${PRODUCT_VERSION_CODE}
+
+DEFINES += APP_VERSION='"\\\"$${VERSION}\\\""'
 
 delivery {
     message("Building a delivery version.")
@@ -35,7 +39,8 @@ SOURCES += main.cpp
 # platform related settings
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
-    OTHER_FILES += android/AndroidManifest.xml       android/build.gradle
+    OTHER_FILES += android/AndroidManifest.xml \
+                   android/build.gradle
 }
 win32 {
     CONFIG -= debug_and_release debug_and_release_target
