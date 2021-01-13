@@ -26,57 +26,66 @@ import "../components"
 import "../components/levels"
 
 MenuSceneBase {
-  id: root
+    id: root
 
-  signal levelSelected(int number)
+    signal levelSelected(int number)
 
-  headerText: qsTr("Levels")
+    headerText: qsTr("Levels")
 
-  ColumnLayout {
-      anchors {
-          fill: parent
-          margins: Style.sizes.margin
-      }
+    Flickable {
+        anchors {
+            fill: parent
+            margins: Style.sizes.margin
+        }
 
-      // TODO: add scroll area when needed
-      GridLayout {
-          columns: 6
+        contentHeight: contentLayout.height
 
-          columnSpacing: Style.sizes.margin
-          rowSpacing: Style.sizes.margin
+        clip: true
 
-          Repeater {
-              model: levelsManager.count
+        ColumnLayout {
+            id: contentLayout
 
-              delegate: LevelButton {
-                  levelIndex: index
+            width: parent.width
 
-                  Layout.fillWidth: true
-                  Layout.preferredHeight: width
+            GridLayout {
+                columns: 6
 
-                  onClicked: {
-                      root.levelSelected(levelIndex)
-                      if (levelIndex == 0) {
-                          tutorialPopup.open()
-                      }
-                  }
-              }
-          }
+                columnSpacing: Style.sizes.margin
+                rowSpacing: Style.sizes.margin
 
-          // TODO: add more levels - temporary UI improvement
-          Repeater {
-              model: 9
+                Repeater {
+                    model: levelsManager.count
 
-              delegate: LevelButton {
-                  levelIndex: levelsManager.count + index
+                    delegate: LevelButton {
+                        levelIndex: index
 
-                  Layout.fillWidth: true
-                  Layout.preferredHeight: width
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: width
 
-                  opacity: 0.3
-              }
-          }
-      }
-  }
+                        onClicked: {
+                            root.levelSelected(levelIndex)
+                            if (levelIndex == 0) {
+                                tutorialPopup.open()
+                            }
+                        }
+                    }
+                }
+
+                // TODO: add more levels - temporary UI improvement
+                Repeater {
+                    model: 15
+
+                    delegate: LevelButton {
+                        levelIndex: levelsManager.count + index
+
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: width
+
+                        opacity: 0.3
+                    }
+                }
+            }
+        }
+    }
 
 }

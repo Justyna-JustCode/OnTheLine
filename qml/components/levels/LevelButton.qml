@@ -28,9 +28,9 @@ CustomButton {
     property int levelIndex
     readonly property int levelNumber: levelIndex + 1
 
-    padding: 0.35 * width
-    leftPadding: 0.35 * width
-    rightPadding: 0.35 * width
+    padding: 0.3 * width
+    leftPadding: 0.3 * width
+    rightPadding: 0.3 * width
 
     implicitWidth: Style.sizes.defaultButtonSize / 2
     implicitHeight: Style.sizes.defaultButtonSize / 2
