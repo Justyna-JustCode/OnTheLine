@@ -26,7 +26,7 @@ import "../../components"
 
 CustomButton {
     property int levelIndex
-    readonly property int levelNumber: index + 1
+    readonly property int levelNumber: levelIndex + 1
 
     padding: 0.35 * width
     leftPadding: 0.35 * width

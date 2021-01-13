@@ -40,7 +40,6 @@ MenuSceneBase {
 
       // TODO: add scroll area when needed
       GridLayout {
-          id: availableRepeater
           columns: 6
 
           columnSpacing: Style.sizes.margin
@@ -66,11 +65,10 @@ MenuSceneBase {
 
           // TODO: add more levels - temporary UI improvement
           Repeater {
-              id: unavailableRepeater
               model: 9
 
               delegate: LevelButton {
-                  levelIndex: 3// + unavailableRepeater.index
+                  levelIndex: levelsManager.count + index
 
                   Layout.fillWidth: true
                   Layout.preferredHeight: width
