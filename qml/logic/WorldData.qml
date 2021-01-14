@@ -20,7 +20,7 @@
 import QtQuick 2.12
 
 Item {
-    // intput parameters
+    // input parameters
     property size mapSize: Qt.size(0, 0)
 
     // output data
