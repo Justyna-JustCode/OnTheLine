@@ -69,16 +69,6 @@ QtObject {
         return blockersList
     }
 
-    function isBlocker(row, column) {
-        if (row > size.height ||
-                column > size.width) {
-            console.warn("Wrong position used in map data.")
-            return
-        }
-
-        return content[row][column] === priv.blocker_indicator;
-    }
-
     function clear() {
         content = []
     }
