@@ -21,7 +21,7 @@ import QtQuick 2.12
 
 QtObject {
     property QtObject priv: QtObject {
-        readonly property string blocker_indicator: "1"
+        readonly property string blocker_indicator: '1'
         readonly property string player_indicator: 'P'
         readonly property string crate_indicator: 'S'
         readonly property string target_indicator: 'X'

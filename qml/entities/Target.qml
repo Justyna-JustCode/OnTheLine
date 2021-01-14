@@ -33,16 +33,10 @@ BaseObject {
 
         bodyType: Body.Static
 
-        fixedRotation: true
-        linearVelocity: Qt.point(0, 0)
-
         collidesWith: Statics.entityCategories.crate
 
         fixture.onBeginContact: {
-            var otherBody = other.getBody()
-            if (otherBody.target.entityType === Statics.entityTypes.crate) {
-                root.hit()
-            }
+            root.hit()
         }
     }
 
