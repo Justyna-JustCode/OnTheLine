@@ -31,7 +31,6 @@ BaseObject {
         id: priv
 
         property bool beingPushed: false
-        readonly property bool moving: collider.moving
     }
 
     collider {
@@ -65,7 +64,7 @@ BaseObject {
     }
 
     CustomSoundEffect {
-        active: priv.moving // playing if moving
+        active: collider.moving // playing if moving
         source: qrc("assets/sounds/push.wav")
     }
 }
