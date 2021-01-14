@@ -26,10 +26,12 @@ EntityBase {
     property point pos: Qt.point(0, 0)    // defines an object position an a map fields (see MapData)
     property real sizeModifier: 1   // defines an object size in a realtion to field size
 
+    readonly property real fieldMargins: (1 - sizeModifier) * fieldSize / 2
+
     readonly property alias collider: collider
 
-    x: pos.x * fieldSize
-    y: pos.y * fieldSize
+    x: pos.x * fieldSize + fieldMargins
+    y: pos.y * fieldSize + fieldMargins
 
     width: fieldSize * sizeModifier
     height: fieldSize * sizeModifier
