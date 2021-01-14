@@ -37,7 +37,6 @@ QtObject {
         readonly property real restitutionNoBounding: 0  // a value of resitution that make object not bouncy
 
         readonly property real crateLinearDumpling: 30  // defines how fast crate will slow and stop after a contact
-        readonly property real crateFriction: 0.01      // defines a friction between crate and other objects
 
         // values of frame count for sprite
         readonly property int slowFrameRate: 10;

@@ -40,7 +40,6 @@ BaseObject {
         fixedRotation: true
 
         linearDamping: priv.beingPushed ? 0 : Statics.behavior.crateLinearDumpling
-        friction: Statics.behavior.crateFriction
 
         // restitution is bounciness - a wooden box doesn't bounce
         restitution: Statics.behavior.restitutionNoBounding
