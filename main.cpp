@@ -25,29 +25,26 @@
 
 int main(int argc, char *argv[])
 {
-  QApplication app(argc, argv);
-  FelgoApplication felgo;
+    QApplication app(argc, argv);
+    FelgoApplication felgo;
 
-  // Use platform-specific fonts instead of Felgo's default font
-  felgo.setPreservePlatformFonts(true);
+    QQmlApplicationEngine engine;
+    felgo.initialize(&engine);
 
-  QQmlApplicationEngine engine;
-  felgo.initialize(&engine);
-
-  /* A different method of using qml files is used for a delivery build
-   * and a working build in order to achieve faster compilation.
-   * See the pro file for more details.
-   */
+    /* A different method of using qml files is used for a delivery build
+    * and a working build in order to achieve faster compilation.
+    * See the pro file for more details.
+    */
 #ifdef DELIVERY_BUILD
-  engine.rootContext()->setContextProperty("DELIVERY_BUILD", true);
-  felgo.setMainQmlFileName(QStringLiteral("qrc:/qml/Main.qml"));
+    engine.rootContext()->setContextProperty("DELIVERY_BUILD", true);
+    felgo.setMainQmlFileName(QStringLiteral("qrc:/qml/Main.qml"));
 #else
-  engine.rootContext()->setContextProperty("DELIVERY_BUILD", false);
-  felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
+    engine.rootContext()->setContextProperty("DELIVERY_BUILD", false);
+    felgo.setMainQmlFileName(QStringLiteral("qml/Main.qml"));
 #endif
 
-  engine.rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
+    engine.rootContext()->setContextProperty("APP_VERSION", APP_VERSION);
 
-  engine.load(QUrl(felgo.mainQmlFileName()));
-  return app.exec();
+    engine.load(QUrl(felgo.mainQmlFileName()));
+    return app.exec();
 }

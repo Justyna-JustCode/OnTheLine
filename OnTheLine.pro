@@ -22,8 +22,8 @@ delivery {
 } else {
     message("Building a working version.")
 
-    # in a working wersion qml folder is deploy instead of
-    # the resources file for a faster compliation
+    # in a working version qml folder is deployed instead of
+    # the resources file for a faster compilation
     qmlFolder.source = qml
     DEPLOYMENTFOLDERS += qmlFolder
 
